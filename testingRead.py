@@ -48,9 +48,25 @@ print(txtContent)
 testArray = [1, 9, 2, 20, 3, 16, 4, 19, 5, 11, 8, 7, 18, 17, 13, 12, 15, 14, 6, 10]
 
 #splitting the array into seperated vertex and edge arrays
+v = []
+e = []
+for i in range(len(testArray)):
+    length = len(testArray)
+    if (i < length/2):
+        v.append(testArray[i])
+    else:
+        e.append(testArray[i])
 
-for i in range(len(testArray))
-    if (i % 2 == 0) #if even, its a 
+print("This is v -> " + str(v))
+print("This is e -> " + str(e))
+
+
+vHead = []
+vTail = []
+
+#for i in range(len(v)):
+ #   if (i % 2 == 0) #if even, its a head vertex. else, it's a tail vertex
+        # 
 
 
 #LEFT OFF HEREEEEE ->>> https://www.geeksforgeeks.org/split-and-parse-a-string-in-python/ <- looking at the split function instead cuz it might work better at parsing strings
