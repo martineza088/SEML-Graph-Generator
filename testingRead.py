@@ -46,7 +46,7 @@ print(txtContent)
 #let's say this is the original array
 testArray = [1, 9, 2, 20, 3, 16, 4, 19, 5, 11, 8, 7, 18, 17, 13, 12, 15, 14, 6, 10]
 
-#splitting the array into 
+#splitting the array into seperated vertex and edge arrays
 
 for i in range(len(testArray))
     if (i % 2 == 0) #if even, its a 
