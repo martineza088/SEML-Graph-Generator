@@ -42,6 +42,7 @@ file1 = open('testFile.txt', 'r')
 txtContent = file1.readlines()
 print(txtContent) 
 
+#more changes line 45 
 
 #let's say this is the original array
 testArray = [1, 9, 2, 20, 3, 16, 4, 19, 5, 11, 8, 7, 18, 17, 13, 12, 15, 14, 6, 10]
