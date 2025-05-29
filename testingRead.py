@@ -42,32 +42,49 @@ file1 = open('testFile.txt', 'r')
 txtContent = file1.readlines()
 print(txtContent) 
 
-#more changes line 45 
 
 #let's say this is the original array
 testArray = [1, 9, 2, 20, 3, 16, 4, 19, 5, 11, 8, 7, 18, 17, 13, 12, 15, 14, 6, 10]
 
 #splitting the array into seperated vertex and edge arrays
-v = []
-e = []
+vertices = []
+edges = []
 for i in range(len(testArray)):
     length = len(testArray)
     if (i < length/2):
-        v.append(testArray[i])
+        vertices.append(testArray[i])
     else:
-        e.append(testArray[i])
+        edges.append(testArray[i])
 
-print("This is v -> " + str(v))
-print("This is e -> " + str(e))
+print("This is vertices -> " + str(vertices))
+print("This is edges -> " + str(edges))
 
 
 vHead = []
 vTail = []
 
-#for i in range(len(v)):
- #   if (i % 2 == 0) #if even, its a head vertex. else, it's a tail vertex
-        # 
+for i in range(len(vertices)):
+    if (i % 2 == 0): #if even, its a head vertex. else, it's a tail vertex
+        vHead.append(vertices[i])
+    else:
+        vTail.append(vertices[i]) 
 
+print("This is vHead -> " + str(vHead))
+print("This is vTail -> " + str(vTail))
+
+
+# code block that does calculates the sums for each head vertex and its edge value
+sum = [] # array of (headVertex + edgeLabel) values
+numV = int(len(vertices)/2) #variable used for the following loop
+print("Value of numV -> " + str(numV)) #
+for v in range(numV):
+    vIndex = (v+1)%numV #makes sure that second vertex is added first and the first head vertex is added last
+    for i in range(2):
+        appending = vHead[vIndex] + edges[((2*v) + i + 1) % len(edges)] #adding the head vertex and its associated edge label
+        sum.append(appending)
+
+print("Final sum array -> " + str(sum))
+# code block that calculates the subtractive edge weight
 
 #LEFT OFF HEREEEEE ->>> https://www.geeksforgeeks.org/split-and-parse-a-string-in-python/ <- looking at the split function instead cuz it might work better at parsing strings
 # ALSO its time to run Alley's code cuz there's more output that I haven't even looked at yet (*-*')
