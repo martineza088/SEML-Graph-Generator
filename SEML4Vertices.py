@@ -4,7 +4,18 @@ import matplotlib.pyplot as mp
 #creating the digraph object
 SEML = nx.DiGraph()
 #adding nodes
-SEML.add_node(7, pos = (1, 3), node_color = 'gray')
+SEML.add_node(7,pos=(1,3),node_color='gray')
+SEML.add_node(1,pos=(3,1),node_color='gray')
+SEML.add_node(8,pos=(5,3),node_color='gray')
+SEML.add_node(4,pos=(3,5),node_color='gray')
+
+SEML.add_node(2,pos=(1.5,4.5),node_color='blue')
+SEML.add_node(5,pos=(1.5,1.5),node_color='white')
+SEML.add_node(6,pos=(4.5,1.5),node_color='white')
+SEML.add_node(3,pos=(4.5,4.5),node_color='white')
+
+#edges
+SEML.add_edges_from([(7, 1), (8, 1), (8, 4), (7, 4)])
 
 position = nx.get_node_attributes(SEML, 'pos')
 node_color = nx.get_node_attributes(SEML, 'node_color')
