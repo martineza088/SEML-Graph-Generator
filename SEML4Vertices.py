@@ -20,7 +20,7 @@ SEML.add_edges_from([(7, 1), (8, 1), (8, 4), (7, 4)])
 position = nx.get_node_attributes(SEML, 'pos')
 node_color = nx.get_node_attributes(SEML, 'node_color')
 
-mp.title("TESTINGGGG")
+mp.title("Testing 4 vertices")
 nx.draw(SEML, position, node_color = 'gray', with_labels = True)
 mp.savefig("testSave" + ".jpg")
 
