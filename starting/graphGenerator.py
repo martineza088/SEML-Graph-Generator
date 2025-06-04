@@ -1,0 +1,1 @@
+# creating a file for automatic coordinate assignment (rather than hard-coding)
