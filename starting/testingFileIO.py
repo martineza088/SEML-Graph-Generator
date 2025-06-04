@@ -1,4 +1,4 @@
-# yo
+# testing input/output in python
 import networkx as nx
 import matplotlib.pyplot as mpt
 
@@ -8,24 +8,24 @@ file = open("testFile.txt", "x")
 
 # but this is a more efficient use of resources since it closes the file right after using it: vvv
 #with open("testFile.txt", "a") as file:
-#    file.write("Yoink")
+#    file.write("why hello")
 
 #but since I need the file to stay open, I'm not gonna use the while-statement above
 
 
 
 
-file.write("ummmmm\n")
-file.write("wondering if this'll add")
-print("yuhhh it workedddd")
+file.write("hmmmmm\n")
+file.write("checking output")
+print("it worksss")
 
 inputFromUser = input("Enter something: ")
 
-print("yey: " + inputFromUser)
+print("Your input: " + inputFromUser)
 
 floatFromUser = float(input("Enter a number: "))
-print("ooh a decimal perhaps? -> " + str(floatFromUser))
+print("a decimal  -> " + str(floatFromUser))
 
 #adding input to the file
-file.write("\nooh more words -> " + inputFromUser + "\nnumber!: " + str(floatFromUser))
+file.write("\nmore words -> " + inputFromUser + "\nnumber!: " + str(floatFromUser))
 

@@ -42,5 +42,4 @@ file1 = open('testFile.txt', 'r')
 txtContent = file1.readlines()
 print(txtContent) 
 
-#LEFT OFF HEREEEEE ->>> https://www.geeksforgeeks.org/split-and-parse-a-string-in-python/ <- looking at the split function instead cuz it might work better at parsing strings
-# ALSO its time to run Alley's code cuz there's more output that I haven't even looked at yet (*-*')
+#Left off here ->>> https://www.geeksforgeeks.org/split-and-parse-a-string-in-python/ <- looking at the split function instead since it might work better at parsing strings
