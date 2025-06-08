@@ -1,34 +1,20 @@
 # creating a file for automatic coordinate assignment (rather than hard-coding)
-import networkx as nx
-import matplotlib.pyplot as mp
+# should be able to automatically graph a given array of values for a valid SEML graph (following this format: [v1, v2, v3, v4,... e1, e2, e3, e4...] )
 
-#checking if node values can be negative, and if the graph image will accomodate
+#importing math library to calculate sine and cosine values
+import math as math
 
-#creating the digraph object
-negativeSEML = nx.DiGraph()
-#adding nodes, coordinate transformations: x - minus 5, y - minus 5
-negativeSEML.add_node(7,pos=(-4,-2),node_color='gray')
-negativeSEML.add_node(1,pos=(-2,-4),node_color='gray')
-negativeSEML.add_node(8,pos=(0,-2),node_color='gray')
-negativeSEML.add_node(4,pos=(-2,0),node_color='gray')
+#creating this variable for convenience and for more readable code
+pi = math.pi 
+print("pi:", pi)
+#provided array:
+graphValues = [4, 8, 1, 7, 3, 6, 5, 2]
 
-negativeSEML.add_node(2,pos=(-3.5, -.5),node_color='blue')
-negativeSEML.add_node(5,pos=(-3.5, -3.5),node_color='white')
-negativeSEML.add_node(6,pos=(-.5, -3.5),node_color='white')
-negativeSEML.add_node(3,pos=(-.5, -.5),node_color='white')
+#n = number of nodes in the graph
+n = len(graphValues)/2
 
-#edges
-negativeSEML.add_edges_from([(7, 1), (8, 1), (8, 4), (7, 4)])
+#testing the math library
 
-position = nx.get_node_attributes(negativeSEML, 'pos')
-node_color = nx.get_node_attributes(negativeSEML, 'node_color')
-
-mp.title("Testing negative 4 vertices")
-nx.draw(negativeSEML, position, node_color = 'gray', with_labels = True)
-mp.savefig("Negative SEML Coordinates" + ".jpg")
-
-#next two functions are executed to clear the recently created graphs (to prepare to create new graphs)
-mp.clf()
-negativeSEML.clear()
-
-print("done!")
+x = (3*pi)/2
+stringX = "(3*pi)/2"
+print("cos(", stringX, ") = ", math.cos(x))
