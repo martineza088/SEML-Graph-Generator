@@ -11,8 +11,6 @@ print("pi:", pi)
 #provided array:
 graphValues = [4, 8, 1, 7, 3, 6, 5, 2]  #[1, 9, 2, 20, 3, 16, 4, 19, 5, 11, 8, 7, 18, 17, 13, 12, 15, 14, 6, 10]
 
-
-
 #n = number of nodes in the graph
 n = len(graphValues)/2
 
@@ -29,10 +27,7 @@ x = 60
 xRad = math.radians(x)
 print("cos(", x, ") = ", math.cos(xRad))
 
-
-
 #testing ^^^^^^^^
-print("\a")
 
 # filePath = r"C:\Users\alyan\Downloads\Research\SEML Research (Summer '24 & '25)\SEML-Graph-Generator\starting\SEMLvalueSorting.py"
 # exec(filePath)
@@ -52,31 +47,38 @@ y_cor = []
 
 i = 0
 c = 360/n
-while (i <= 360):
+while (i < 360):
     # i is the angle in degrees, will be converted to radians to calculate the cosine value
+    print("This is the value of i: ", i)
     i_rad = math.radians(i)
-
+    # print("i in radians: ", i_rad)
     # multiplying cos(rad(i)) by r to find x-coordinate
-    cor1 = r * math.cos(i)
+    #print("math.cos(i),  -> ")
+    cor1 = r * math.cos(i_rad)
     x_cor.append(cor1)
 
-    cor2 = r * math.sin(i)
+    cor2 = r * math.sin(i_rad)
     y_cor.append(cor2)
 
     i += c # increments by c, aka angle of coordinates in degrees
 
+print("x_cor -> ", x_cor, " | y_cor -> ", y_cor)
 
+print("Coordinates in proper formats: ")
+for i in range(len(x_cor)):
+    print("Node " + str(vertices[i]) + " is at (" + str(x_cor[i]) + ", " + str(y_cor[i]) + ")")
 # for loop that iterates through the x and y-coordinate arrays (for node location) and values in SEML array (FOR NODES ONLY)
 for i in range(len(vertices)):
     # SEMLgraph.add_node(7,pos=(-4,-2),node_color='gray') <- command format for below
     SEMLgraph.add_node(vertices[i], pos = (x_cor[i], y_cor[i]), node_color = 'gray')
 
-
+# '''
+ #STRINGS TO AVOID CREATING GRAPHS
 
 position = nx.get_node_attributes(SEMLgraph, 'pos')
 node_color = nx.get_node_attributes(SEMLgraph, 'node_color')
 
-title = "Testing Automatic graphing"
+title = "Testing Automatic graphing2"
 mp.title(title)
 nx.draw(SEMLgraph, position, node_color = 'gray', with_labels = True)
 mp.savefig(title + ".jpg")
@@ -86,6 +88,4 @@ mp.clf()
 SEMLgraph.clear()
 print("done")
 
-
-
-
+# '''
