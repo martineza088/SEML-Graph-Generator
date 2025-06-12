@@ -9,7 +9,8 @@ import math as math
 pi = math.pi 
 print("pi:", pi)
 #provided array:
-graphValues = [4, 8, 1, 7, 3, 6, 5, 2]  #[1, 9, 2, 20, 3, 16, 4, 19, 5, 11, 8, 7, 18, 17, 13, 12, 15, 14, 6, 10]
+# graphValues = [4, 8, 1, 7, 3, 6, 5, 2]  
+graphValues = [1, 9, 2, 20, 3, 16, 4, 19, 5, 11, 8, 7, 18, 17, 13, 12, 15, 14, 6, 10]
 
 #n = number of nodes in the graph
 n = len(graphValues)/2
@@ -78,7 +79,7 @@ for i in range(len(vertices)):
 position = nx.get_node_attributes(SEMLgraph, 'pos')
 node_color = nx.get_node_attributes(SEMLgraph, 'node_color')
 
-title = "Testing Automatic graphing2"
+title = "Testing Automatic graphing 10 vertices"
 mp.title(title)
 nx.draw(SEMLgraph, position, node_color = 'gray', with_labels = True)
 mp.savefig(title + ".jpg")
