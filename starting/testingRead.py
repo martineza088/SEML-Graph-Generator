@@ -2,7 +2,7 @@
 gString = "[1, 12, 2, 7, 3, 9, 11, 10, 5, 4, 6, 8]  k= 0" #might not be exact since I'm not sure what the format is
 
 #for in in range(len(gString))
-   # if (gString[i] == '') ##LEFT OFF HEREEEEEEEEEEE TRYING TO FIGURE OUT HOW TO PARSE TOKENS CORRECTLY TO CREATE THE EDGE AND VERTEX ARRAYS (JUST REALIZED THAT I FORGOT TO THINK ABOUT DIVIDING THE ARRAY IN TWO FOR VERTEX VS EDGE VALUES)
+   # if (gString[i] == '') 
     
 values = []
 for i in range(len(gString)):
