@@ -12,6 +12,7 @@ print("pi:", pi)
 graphValues = [4, 8, 1, 7, 3, 6, 5, 2]  #[1, 9, 2, 20, 3, 16, 4, 19, 5, 11, 8, 7, 18, 17, 13, 12, 15, 14, 6, 10]
 
 
+
 #n = number of nodes in the graph
 n = len(graphValues)/2
 
@@ -31,9 +32,14 @@ print("cos(", x, ") = ", math.cos(xRad))
 
 
 #testing ^^^^^^^^
+print("\a")
 
-
-
+# filePath = r"C:\Users\alyan\Downloads\Research\SEML Research (Summer '24 & '25)\SEML-Graph-Generator\starting\SEMLvalueSorting.py"
+# exec(filePath)
+# print(filePath)
+from SEMLvalueSorting import VEarrayGen
+vertices, edges = VEarrayGen(graphValues)
+print("Vertices -> ", vertices, "Edges -> ", edges)
 # radius of the graph (will have a circular shape) 
 r = n/2  # number of nodes & radius: 4 & 2, 6 & 3, 8 & 4, 10 & 5, 14 & 7
 
@@ -59,12 +65,11 @@ while (i <= 360):
     i += c # increments by c, aka angle of coordinates in degrees
 
 
-print("end")
 # for loop that iterates through the x, y-coordinate arrays (for node location) and values in SEML array 
 # for i in range(len(graphValues/2)):
     # SEMLgraph.add_node()
 # SEMLgraph.add_node(7,pos=(-4,-2),node_color='gray')
-
+print("done")
 
 
 
