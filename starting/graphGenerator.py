@@ -37,9 +37,10 @@ print("\a")
 # filePath = r"C:\Users\alyan\Downloads\Research\SEML Research (Summer '24 & '25)\SEML-Graph-Generator\starting\SEMLvalueSorting.py"
 # exec(filePath)
 # print(filePath)
-from SEMLvalueSorting import VEarrayGen
+from SEMLvalueSorting import VEarrayGen #using a function from another file
 vertices, edges = VEarrayGen(graphValues)
-print("Vertices -> ", vertices, "Edges -> ", edges)
+print("Vertices -> ", vertices, "Edges -> ", edges) #printcheck
+
 # radius of the graph (will have a circular shape) 
 r = n/2  # number of nodes & radius: 4 & 2, 6 & 3, 8 & 4, 10 & 5, 14 & 7
 
@@ -65,10 +66,24 @@ while (i <= 360):
     i += c # increments by c, aka angle of coordinates in degrees
 
 
-# for loop that iterates through the x, y-coordinate arrays (for node location) and values in SEML array 
-# for i in range(len(graphValues/2)):
-    # SEMLgraph.add_node()
-# SEMLgraph.add_node(7,pos=(-4,-2),node_color='gray')
+# for loop that iterates through the x and y-coordinate arrays (for node location) and values in SEML array (FOR NODES ONLY)
+for i in range(len(vertices)):
+    # SEMLgraph.add_node(7,pos=(-4,-2),node_color='gray') <- command format for below
+    SEMLgraph.add_node(vertices[i], pos = (x_cor[i], y_cor[i]), node_color = 'gray')
+
+
+
+position = nx.get_node_attributes(SEMLgraph, 'pos')
+node_color = nx.get_node_attributes(SEMLgraph, 'node_color')
+
+title = "Testing Automatic graphing"
+mp.title(title)
+nx.draw(SEMLgraph, position, node_color = 'gray', with_labels = True)
+mp.savefig(title + ".jpg")
+
+#next two functions are executed to clear the recently created graphs (to prepare to create new graphs)
+mp.clf()
+SEMLgraph.clear()
 print("done")
 
 
