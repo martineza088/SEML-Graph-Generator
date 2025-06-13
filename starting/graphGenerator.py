@@ -37,6 +37,9 @@ from SEMLvalueSorting import VEarrayGen #using a function from another file
 vertices, edges = VEarrayGen(graphValues)
 print("Vertices -> ", vertices, "Edges -> ", edges) #printcheck
 
+from SEMLvalueSorting import V_HeadTailGen 
+vHead, vTail = V_HeadTailGen(vertices, edges)
+print("vHead -> ", vHead, "vTail -> ", vTail)
 # radius of the graph (will have a circular shape) 
 r = n/2  # number of nodes & radius: 4 & 2, 6 & 3, 8 & 4, 10 & 5, 14 & 7
 
@@ -73,7 +76,7 @@ for i in range(len(vertices)):
     # SEMLgraph.add_node(7,pos=(-4,-2),node_color='gray') <- command format for below
     SEMLgraph.add_node(vertices[i], pos = (x_cor[i], y_cor[i]), node_color = 'gray')
 
-# '''
+'''
  #STRINGS TO AVOID CREATING GRAPHS
 
 position = nx.get_node_attributes(SEMLgraph, 'pos')
@@ -89,4 +92,14 @@ mp.clf()
 SEMLgraph.clear()
 print("done")
 
-# '''
+'''
+edgeTuples = []
+for i in range(0, len(vTail)):  # ex: i = 0, len(vTail) = 5
+    #tailIndex = i# tailIndex = (len(vTail) - i) % len(vTail)   # tailIndex = (5-0) % 5 = 0
+    # print("tailIndex = ", tailIndex)
+    newTuple1 = (vTail[i], vHead[i])    # (vTail[0], vHead[0])
+    newTuple2 = (vTail[i], vHead[(i+1) % len(vHead)])   # (vTail[0], vHead[1])
+    edgeTuples.append(newTuple1)
+    edgeTuples.append(newTuple2)
+
+print("edgeTuples -> ", edgeTuples)
