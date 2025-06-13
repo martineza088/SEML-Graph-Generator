@@ -9,8 +9,15 @@ import math as math
 pi = math.pi 
 print("pi:", pi)
 #provided array:
-# graphValues = [4, 8, 1, 7, 3, 6, 5, 2]  
-graphValues = [1, 9, 2, 20, 3, 16, 4, 19, 5, 11, 8, 7, 18, 17, 13, 12, 15, 14, 6, 10]
+graphCases = [[4, 8, 1, 7, 3, 6, 5, 2], [1, 6, 2, 10, 3, 12, 5, 4, 8, 7, 9, 11], # 4 vertices, 6 vertices
+              [8, 14, 7, 15, 3, 16, 1, 12, 4, 5, 6, 10, 11, 13, 9, 1], #[8, 7, 3, 1, 14, 15, 16, 12, 4, 5, 6, 10, 11, 13, 9, 2], # 8 vertices
+              [1, 9, 2, 20, 3, 16, 4, 19, 5, 11, 8, 7, 18, 17, 13, 12, 15, 14, 6, 10], # 10 vertices
+              [1, 12, 2, 15, 3, 28, 4, 26, 5, 21, 6, 25, 7, 27, 9, 8, 11, 10, 23, 22, 20, 19, 14, 13, 17, 16, 18, 24], # 14 vertices
+              [1, 36, 2, 33, 3, 18, 4, 23, 5, 22, 6, 35, 7, 28, 8, 32, 9, 34, 31, 30, 27, 26, 11, 10, 15, 14, 13, 12, 25, 24, 17, 16, 20, 19, 21, 29]] # 18 vertices
+caseNum = 5
+graphValues = graphCases[caseNum]
+print("Reading from the following: ", graphValues)
+
 
 #n = number of nodes in the graph
 n = len(graphValues)/2
@@ -76,13 +83,26 @@ for i in range(len(vertices)):
     # SEMLgraph.add_node(7,pos=(-4,-2),node_color='gray') <- command format for below
     SEMLgraph.add_node(vertices[i], pos = (x_cor[i], y_cor[i]), node_color = 'gray')
 
-'''
+
+edgeTuples = []
+for i in range(0, len(vTail)):  # ex: i = 0, len(vTail) = 5
+    newTuple1 = (vTail[i], vHead[i])   # (vTail[0], vHead[0])
+    newTuple2 = (vTail[i], vHead[(i+1) % len(vHead)])   # (vTail[0], vHead[1])
+    edgeTuples.append(newTuple1)
+    edgeTuples.append(newTuple2)
+
+print("edgeTuples -> ", edgeTuples)
+
+toExecute = "SEMLgraph.add_edges_from(" + str(edgeTuples) + ")"
+exec(toExecute)
+
+
  #STRINGS TO AVOID CREATING GRAPHS
 
 position = nx.get_node_attributes(SEMLgraph, 'pos')
 node_color = nx.get_node_attributes(SEMLgraph, 'node_color')
 
-title = "Testing Automatic graphing 10 vertices"
+title = "Testing Automatic for test case #" + str(caseNum)
 mp.title(title)
 nx.draw(SEMLgraph, position, node_color = 'gray', with_labels = True)
 mp.savefig(title + ".jpg")
@@ -92,14 +112,3 @@ mp.clf()
 SEMLgraph.clear()
 print("done")
 
-'''
-edgeTuples = []
-for i in range(0, len(vTail)):  # ex: i = 0, len(vTail) = 5
-    #tailIndex = i# tailIndex = (len(vTail) - i) % len(vTail)   # tailIndex = (5-0) % 5 = 0
-    # print("tailIndex = ", tailIndex)
-    newTuple1 = (vTail[i], vHead[i])    # (vTail[0], vHead[0])
-    newTuple2 = (vTail[i], vHead[(i+1) % len(vHead)])   # (vTail[0], vHead[1])
-    edgeTuples.append(newTuple1)
-    edgeTuples.append(newTuple2)
-
-print("edgeTuples -> ", edgeTuples)
