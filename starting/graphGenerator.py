@@ -14,7 +14,7 @@ graphCases = [[4, 8, 1, 7, 3, 6, 5, 2], [1, 6, 2, 10, 3, 12, 5, 4, 8, 7, 9, 11],
               [1, 9, 2, 20, 3, 16, 4, 19, 5, 11, 8, 7, 18, 17, 13, 12, 15, 14, 6, 10], # 10 vertices
               [1, 12, 2, 15, 3, 28, 4, 26, 5, 21, 6, 25, 7, 27, 9, 8, 11, 10, 23, 22, 20, 19, 14, 13, 17, 16, 18, 24], # 14 vertices
               [1, 36, 2, 33, 3, 18, 4, 23, 5, 22, 6, 35, 7, 28, 8, 32, 9, 34, 31, 30, 27, 26, 11, 10, 15, 14, 13, 12, 25, 24, 17, 16, 20, 19, 21, 29]] # 18 vertices
-caseNum = 5
+caseNum = 2
 graphValues = graphCases[caseNum]
 print("Reading from the following: ", graphValues)
 
@@ -56,10 +56,13 @@ SEMLgraph = nx.DiGraph()
 x_cor = []
 y_cor = []
 
+anglesDeg = [] # stores the angles where the nodes are all located (in order)
+
 i = 0
 c = 360/n
 while (i < 360):
     # i is the angle in degrees, will be converted to radians to calculate the cosine value
+    anglesDeg.append(i)
     print("This is the value of i: ", i)
     i_rad = math.radians(i)
     # print("i in radians: ", i_rad)
@@ -96,9 +99,9 @@ print("edgeTuples -> ", edgeTuples)
 toExecute = "SEMLgraph.add_edges_from(" + str(edgeTuples) + ")"
 exec(toExecute)
 
-
+print("This is anglesDeg: ", anglesDeg)
  #STRINGS TO AVOID CREATING GRAPHS
-
+'''
 position = nx.get_node_attributes(SEMLgraph, 'pos')
 node_color = nx.get_node_attributes(SEMLgraph, 'node_color')
 
@@ -111,4 +114,7 @@ mp.savefig(title + ".jpg")
 mp.clf()
 SEMLgraph.clear()
 print("done")
+'''
+
+# adding edge values to the graph
 
