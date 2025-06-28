@@ -78,9 +78,13 @@ while (i < 360):
 
 print("x_cor -> ", x_cor, " | y_cor -> ", y_cor)
 
-print("Coordinates in proper formats: ")
+print("Coordinates in proper formats: ") #printing coordinates + formatting them into tuples
+coordinateTuples = []
 for i in range(len(x_cor)):
     print("Node " + str(vertices[i]) + " is at (" + str(x_cor[i]) + ", " + str(y_cor[i]) + ")")
+    coordinateTuples.append((x_cor[i], y_cor[i]))
+
+print("Coordinate tuples: ", coordinateTuples)
 # for loop that iterates through the x and y-coordinate arrays (for node location) and values in SEML array (FOR NODES ONLY)
 for i in range(len(vertices)):
     # SEMLgraph.add_node(7,pos=(-4,-2),node_color='gray') <- command format for below
@@ -117,4 +121,69 @@ print("done")
 '''
 
 # adding edge values to the graph
+
+# finding value of radius for graph nodes
+def findRadius(point1Tuple, point2Tuple):
+    x_point1 = point1Tuple[0]
+    y_point1 = point1Tuple[1]
+
+    x_point2 = point2Tuple[0]
+    y_point2 = point2Tuple[1]
+
+    d = math.sqrt(math.exp2(x_point2 - x_point1) + math.exp2(y_point2 - y_point1)) #euclidean distance of two points
+    r = d/2
+    return r
+
+r = findRadius((x_cor[0], y_cor[0]), (x_cor[1], y_cor[1]))
+print("This is the radius: ", r)
+
+
+# finding node coordinate midpoints for origin values
+
+def findMidpoint(point1Tuple, point2Tuple):
+    x_point1 = point1Tuple[0]
+    y_point1 = point1Tuple[1]
+
+    x_point2 = point2Tuple[0]
+    y_point2 = point2Tuple[1]
+
+    midpointCoord = ((x_point2 + x_point1)/2, (y_point2 + y_point1)/2)
+    return midpointCoord
+
+nodeMidpoints = []
+for i in range(len(coordinateTuples)):
+    currentCoord1 = coordinateTuples[i]
+    currentCoord2 = coordinateTuples[(i+1)%(len(coordinateTuples))]
+    
+    midpoint = findMidpoint(currentCoord1, currentCoord2)
+    nodeMidpoints.append(midpoint)
+print("These are the node midpoints: ", nodeMidpoints)
+
+# applying origin and angle formula
+#requires an array/list of the angles in degrees of each of the nodes in the graph 
+def edgeAngleGen(anglesDeg):
+    edgeAngleArray = []
+    for i1 in range(len(anglesDeg)):
+        i2 = (i1 + 1) % (len(anglesDeg)) # index of the angle of the second node
+        
+        if (i2 != 0):
+            edgeAngle = (anglesDeg[i1] + anglesDeg[i2])/2
+        else:
+            edgeAngle = (anglesDeg[i1] + 360)/2
+        print("Edge angles at i1 = ", i1, ": ", edgeAngle)
+        edgeAngleArray.append(edgeAngle)
+
+# r and angle are decimal values, origin is a tuple with decimal values 
+def edgeCoordGen(r, angle, origin):
+    h = origin[0]
+    k = origin[1]
+    x_edgeCoord = (r * math.cos(math.radians(angle)) + h)
+    y_edgeCoord = (r * math.sin(math.radians(angle)) + k)
+
+    edgeCoord = (x_edgeCoord, y_edgeCoord)
+    return edgeCoord
+
+edgeCoordPoints = []
+
+for i in range(len(angles))
 
