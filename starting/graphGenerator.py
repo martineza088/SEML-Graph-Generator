@@ -100,10 +100,10 @@ for i in range(0, len(vTail)):  # ex: i = 0, len(vTail) = 5
 
 print("edgeTuples -> ", edgeTuples)
 
-toExecute = "SEMLgraph.add_edges_from(" + str(edgeTuples) + ")"
+toExecute = "SEMLgraph.add_edges_from(" + str(edgeTuples) + ")" 
 exec(toExecute)
 
-print("This is anglesDeg: ", anglesDeg)
+print("This is anglesDeg: ", anglesDeg) # declared in line 65
  #STRINGS TO AVOID CREATING GRAPHS
 '''
 position = nx.get_node_attributes(SEMLgraph, 'pos')
@@ -172,6 +172,9 @@ def edgeAngleGen(anglesDeg):
             edgeAngle = (anglesDeg[i1] + 360)/2
         print("Edge angles at i1 = ", i1, ": ", edgeAngle)
         edgeAngleArray.append(edgeAngle)
+    return edgeAngleArray
+
+edgeAngleArray = edgeAngleGen(anglesDeg)
 
 # r and angle are decimal values, origin is a tuple with decimal values 
 def edgeCoordGen(r, angle, origin):
@@ -184,6 +187,9 @@ def edgeCoordGen(r, angle, origin):
     return edgeCoord
 
 edgeCoordPoints = []
+# generating all edge coordinate points
+for i in range(len(nodeMidpoints)):
+    coord = edgeCoordGen(r, edgeAngleArray[i], nodeMidpoints[i])
+    edgeCoordPoints.append(coord)
 
-for i in range(len(angles))
-
+print("These are the edge coordinates: ", edgeCoordPoints)
