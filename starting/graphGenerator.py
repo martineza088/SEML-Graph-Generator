@@ -85,6 +85,7 @@ for i in range(len(x_cor)):
     coordinateTuples.append((x_cor[i], y_cor[i]))
 
 print("Coordinate tuples: ", coordinateTuples)
+
 # for loop that iterates through the x and y-coordinate arrays (for node location) and values in SEML array (FOR NODES ONLY)
 for i in range(len(vertices)):
     # SEMLgraph.add_node(7,pos=(-4,-2),node_color='gray') <- command format for below
@@ -104,21 +105,7 @@ toExecute = "SEMLgraph.add_edges_from(" + str(edgeTuples) + ")"
 exec(toExecute)
 
 print("This is anglesDeg: ", anglesDeg) # declared in line 65
- #STRINGS TO AVOID CREATING GRAPHS
-'''
-position = nx.get_node_attributes(SEMLgraph, 'pos')
-node_color = nx.get_node_attributes(SEMLgraph, 'node_color')
 
-title = "Testing Automatic for test case #" + str(caseNum)
-mp.title(title)
-nx.draw(SEMLgraph, position, node_color = 'gray', with_labels = True)
-mp.savefig(title + ".jpg")
-
-#next two functions are executed to clear the recently created graphs (to prepare to create new graphs)
-mp.clf()
-SEMLgraph.clear()
-print("done")
-'''
 
 # adding edge values to the graph
 
@@ -193,3 +180,26 @@ for i in range(len(nodeMidpoints)):
     edgeCoordPoints.append(coord)
 
 print("These are the edge coordinates: ", edgeCoordPoints)
+
+
+# for loop that iterates through edge coordinate array (EDGES ONLY)
+for i in range(len(edgeCoordPoints)):
+    # SEMLgraph.add_node(7,pos=(-4,-2),node_color='gray') <- command format for below
+    SEMLgraph.add_node(edges[i], pos = edgeCoordPoints[i], node_color = 'gray')
+
+
+#STRINGS TO AVOID CREATING GRAPHS
+#'''
+position = nx.get_node_attributes(SEMLgraph, 'pos')
+node_color = nx.get_node_attributes(SEMLgraph, 'node_color')
+
+title = "Testing Automatic w/ edges for test case #" + str(caseNum)
+mp.title(title)
+nx.draw(SEMLgraph, position, node_color = 'gray', with_labels = True)
+mp.savefig(title + ".jpg")
+
+#next two functions are executed to clear the recently created graphs (to prepare to create new graphs)
+mp.clf()
+SEMLgraph.clear()
+print("done")
+#'''
