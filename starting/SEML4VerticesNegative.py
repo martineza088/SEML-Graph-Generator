@@ -22,9 +22,11 @@ negativeSEML.add_edges_from([(7, 1), (8, 1), (8, 4), (7, 4)])
 position = nx.get_node_attributes(negativeSEML, 'pos')
 node_color = nx.get_node_attributes(negativeSEML, 'node_color')
 
-mp.title("Testing negative 4 vertices")
+title = "Testing negative 4 vertices6" + str(9000)
+mp.title(title)
 nx.draw(negativeSEML, position, node_color = 'gray', with_labels = True)
-mp.savefig("Negative SEML Coordinates" + ".jpg")
+#mp.savefig("Negative SEML Coordinates" + ".jpg")
+mp.savefig(title + ".jpg")
 
 #next two functions are executed to clear the recently created graphs (to prepare to create new graphs)
 mp.clf()

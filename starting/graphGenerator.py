@@ -186,6 +186,8 @@ print("These are the edge coordinates: ", edgeCoordPoints)
 for i in range(len(edgeCoordPoints)):
     # SEMLgraph.add_node(7,pos=(-4,-2),node_color='gray') <- command format for below
     SEMLgraph.add_node(edges[i], pos = edgeCoordPoints[i], node_color = 'gray')
+    #    SEMLgraph.add_node(edges[i], pos = (edgeCoordPoints[i][0], edgeCoordPoints[i][1]), node_color = 'gray')
+
 
 
 #STRINGS TO AVOID CREATING GRAPHS
@@ -193,11 +195,12 @@ for i in range(len(edgeCoordPoints)):
 position = nx.get_node_attributes(SEMLgraph, 'pos')
 node_color = nx.get_node_attributes(SEMLgraph, 'node_color')
 
-title = "Testing Automatic w/ edges for test case #" + str(caseNum)
+#title = "Testing Automatic w/ edges for test case #" + str(caseNum)
+title = "Testing Automatic w edges for test case #" + str(caseNum)
 mp.title(title)
 nx.draw(SEMLgraph, position, node_color = 'gray', with_labels = True)
-mp.savefig(title + ".jpg")
 
+mp.savefig(title + ".jpg")
 #next two functions are executed to clear the recently created graphs (to prepare to create new graphs)
 mp.clf()
 SEMLgraph.clear()
