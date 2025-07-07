@@ -15,7 +15,15 @@ graphCases = [[4, 8, 1, 7, 3, 6, 5, 2], [1, 6, 2, 10, 3, 12, 5, 4, 8, 7, 9, 11],
               [1, 12, 2, 15, 3, 28, 4, 26, 5, 21, 6, 25, 7, 27, 9, 8, 11, 10, 23, 22, 20, 19, 14, 13, 17, 16, 18, 24], # 14 vertices
               [1, 36, 2, 33, 3, 18, 4, 23, 5, 22, 6, 35, 7, 28, 8, 32, 9, 34, 31, 30, 27, 26, 11, 10, 15, 14, 13, 12, 25, 24, 17, 16, 20, 19, 21, 29], # 18 vertices
               [6, 9, 11, 3, 10, 5, 12, 7, 1, 2, 4, 8]]
-caseNum = 6
+caseNum = 0
+
+# retrieving graphs from txt file and generating an array that will be used to generate graphs
+
+
+    # graph values 
+    # track the value of k !!
+
+
 graphValues = graphCases[caseNum]
 print("Reading from the following: ", graphValues)
 
@@ -190,18 +198,28 @@ for i in range(len(edgeCoordPoints)):
     #    SEMLgraph.add_node(edges[i], pos = (edgeCoordPoints[i][0], edgeCoordPoints[i][1]), node_color = 'gray')
 
 
+# create a single function that generates the whole graph
+
+
+# create a loop that iterates through the array generated using values provided in the txt
+
+
 
 #STRINGS TO AVOID CREATING GRAPHS
 #'''
 position = nx.get_node_attributes(SEMLgraph, 'pos')
 node_color = nx.get_node_attributes(SEMLgraph, 'node_color')
 
-#title = "Testing Automatic w/ edges for test case #" + str(caseNum)
-title = "Testing Automatic w edges for test case #" + str(caseNum)
-mp.title(title)
+# title = "Testing Automatic w/ edges for test case #" + str(caseNum)
+title = []
+title.append("Testing Automatic w edges for test case #" + str(caseNum))
+
+# change index to choose title for graphs (MAKE SURE TO ALSO CHANGE LINE 222)
+mp.title(title[0])
 nx.draw(SEMLgraph, position, node_color = 'gray', with_labels = True)
 
-mp.savefig(title + ".jpg")
+# CHANGE LINES 222   AND 216  
+mp.savefig(title[0] + ".jpg")
 #next two functions are executed to clear the recently created graphs (to prepare to create new graphs)
 mp.clf()
 SEMLgraph.clear()

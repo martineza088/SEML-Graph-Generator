@@ -1,10 +1,5 @@
 # @author Alley Koenig
 
-import networkx as nx
-import plotly as ply
-import numpy as np
-import sympy as sym
-
 from genFunctions import norepet
 from genFunctions import inrange
 

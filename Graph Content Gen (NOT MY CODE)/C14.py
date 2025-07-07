@@ -1,4 +1,6 @@
-#@author Alley Koenig
+# @author Alley Koenig
+
+# CHANGE OUTPUT FORMAT FOR THIS
 
 from genFunctions import norepet
 from genFunctions import inrange
