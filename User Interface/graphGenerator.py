@@ -19,9 +19,9 @@ caseNum = 0
 
 # retrieving graphs from txt file and generating an array that will be used to generate graphs
 
-
     # graph values 
     # track the value of k !!
+k = 0
 
 
 graphValues = graphCases[caseNum]
@@ -213,6 +213,7 @@ node_color = nx.get_node_attributes(SEMLgraph, 'node_color')
 # title = "Testing Automatic w/ edges for test case #" + str(caseNum)
 title = []
 title.append("Testing Automatic w edges for test case #" + str(caseNum))
+title.append("Graph " + str(caseNum) + " of [INSERT AMOUNT OF VALID GRAPHS ] - k = " + str(k))
 
 # change index to choose title for graphs (MAKE SURE TO ALSO CHANGE LINE 222)
 mp.title(title[0])

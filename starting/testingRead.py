@@ -26,7 +26,7 @@ print(values)
 # gonna use read instead
 # note: i could also use the readlines(#) to potentially control the number of characters that are read (continue looping until something other than a number is reached?)
 
-file1 = open('testFile.txt', 'r')
+file1 = open("testFile.txt", "r") 
 #print("after read function: " + str(file1.read()))
 #print("after readline function: " + str(file1.readline()))
 #print("after readlines function: " + str(file1.readlines()))
