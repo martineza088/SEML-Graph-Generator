@@ -20,6 +20,8 @@ caseNum = 4
 # retrieving graphs from txt file and generating an array that will be used to generate graphs
     # graph values 
 filePath1 = r"C:\Users\alyan\Downloads\Research\SEML Research (Summer '24 & '25)\SEML-Graph-Generator\User Interface\testUserInput.txt"
+
+
 ## VVV CAN BE DELETED (testing file reads)
 with open(filePath1) as file: # "with" keyword automatically opens the file and closes it closes file after it is read
     #fileContents = file.read()
@@ -37,30 +39,40 @@ with open(filePath1) as file: # "with" keyword automatically opens the file and 
 # with open(filePath1) as file: 
 #    fileContents = file.read()
 
-file = open(filePath1)
-c1 = 0
-readLineOutput = []
-fileLine = file.readline()
-readLineOutput.append(fileLine)
+# ^^^^^ CAN BE DELETED (testing file reads)
 
-while ((fileLine != '') and (fileLine != '\n')):
+# returns array containing elements from each line of the file
+def readFile(filePath):
+    file = open(filePath)
+    c1 = 0
+    readLineOutput = []
     fileLine = file.readline()
+    readLineOutput.append(fileLine)
 
-    if (fileLine != ''):
-        readLineOutput.append(fileLine)
-    print("Second attempt at file content reading: ", str(readLineOutput))
+    # loops infinitely until there are no more arrays to read (or it won't continue if the file is empty)
+    while ((fileLine != '') and (fileLine != '\n')):
+        fileLine = file.readline()
+        if (fileLine != ''):
+            readLineOutput.append(fileLine)
+        print("Second attempt at file content reading: ", str(readLineOutput))
+    file.close()
+    return readLineOutput
 
-    
-file.close()
+readLineOutput = readFile(filePath1)
+# takes in an array containing elements that each have a line of file input
+def splitContent(readLineOutput):
+    elements = []
+    for i in range(0, len(readLineOutput)):
+        elements.append(readLineOutput[i].split(','))
+    return elements
 
+elements = splitContent(readLineOutput)
 
-for i in range(0, len(readLineOutput)):
-    element = readLineOutput[i].split(',')
+toExecute1 = 1#[INSERT ARRAY OF VALUES HERE]
 
-toExecute1 = #[INSERT ARRAY OF VALUES HERE]
 # transform this into an array of file contents (each element is a line in the file)
     # track the value of k !!
-print("The value of element: ", element)
+print("The value of element: ", elements)
 k = 0
 
 
@@ -71,20 +83,7 @@ print("Reading from the following: ", graphValues)
 #n = number of nodes in the graph
 n = len(graphValues)/2
 
-#testing the math library vvvvvvvvvvvvv
-# the input for cos(x) function MUST BE IN RADIANS
 
-# treating x1 as if its in radians
-x1 = pi/3       # pi/3 because in radians, this is equal to a 60 degree angle. 
-stringX1 = "pi/3"
-print("cos(", stringX1, ") = ", math.cos(x1))
-
-# treating x as if its in degrees
-x = 60
-xRad = math.radians(x)
-print("cos(", x, ") = ", math.cos(xRad))
-
-#testing ^^^^^^^^
 
 # filePath = r"C:\Users\alyan\Downloads\Research\SEML Research (Summer '24 & '25)\SEML-Graph-Generator\starting\SEMLvalueSorting.py"
 # exec(filePath)
@@ -240,6 +239,7 @@ for i in range(len(edgeCoordPoints)):
 
 # create a single function that generates the whole graph using only an array and the value of k # TODO: will need to add a parameter and a procedure to deal with the value of k
 def graphGen(array):
+
 
     return 1
 
