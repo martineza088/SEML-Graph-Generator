@@ -20,7 +20,7 @@ caseNum = 4
 # retrieving graphs from txt file and generating an array that will be used to generate graphs
     # graph values 
 filePath1 = r"C:\Users\alyan\Downloads\Research\SEML Research (Summer '24 & '25)\SEML-Graph-Generator\User Interface\testUserInput.txt"
-
+## VVV CAN BE DELETED (testing file reads)
 with open(filePath1) as file: # "with" keyword automatically opens the file and closes it closes file after it is read
     #fileContents = file.read()
     #print("File Contents: ", fileContents)
@@ -34,11 +34,33 @@ with open(filePath1) as file: # "with" keyword automatically opens the file and 
     readLineOutput.append(fileLine2)
     print("Read a line of file contents: ", str(readLineOutput))
 
+# with open(filePath1) as file: 
+#    fileContents = file.read()
+
+file = open(filePath1)
+c1 = 0
+readLineOutput = []
+fileLine = file.readline()
+readLineOutput.append(fileLine)
+
+while ((fileLine != '') and (fileLine != '\n')):
+    fileLine = file.readline()
+
+    if (fileLine != ''):
+        readLineOutput.append(fileLine)
+    print("Second attempt at file content reading: ", str(readLineOutput))
+
+    
+file.close()
 
 
+for i in range(0, len(readLineOutput)):
+    element = readLineOutput[i].split(',')
 
+toExecute1 = #[INSERT ARRAY OF VALUES HERE]
 # transform this into an array of file contents (each element is a line in the file)
     # track the value of k !!
+print("The value of element: ", element)
 k = 0
 
 
@@ -216,8 +238,9 @@ for i in range(len(edgeCoordPoints)):
     #    SEMLgraph.add_node(edges[i], pos = (edgeCoordPoints[i][0], edgeCoordPoints[i][1]), node_color = 'gray')
 
 
-# create a single function that generates the whole graph
-def graphGen():
+# create a single function that generates the whole graph using only an array and the value of k # TODO: will need to add a parameter and a procedure to deal with the value of k
+def graphGen(array):
+
     return 1
 
 
