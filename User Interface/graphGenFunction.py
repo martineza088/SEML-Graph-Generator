@@ -6,40 +6,29 @@ import matplotlib.pyplot as mp
 import math as math
 
 #creating this variable for convenience and for more readable code
-pi = math.pi 
+pi = math.pi # PIF (place in function)
 print("pi:", pi)
 #provided array:
-graphCases = [[4, 8, 1, 7, 3, 6, 5, 2], [1, 6, 2, 10, 3, 12, 5, 4, 8, 7, 9, 11], # 4 vertices, 6 vertices
-              [8, 14, 7, 15, 3, 16, 1, 12, 4, 5, 6, 10, 11, 13, 9, 2], #[8, 7, 3, 1, 14, 15, 16, 12, 4, 5, 6, 10, 11, 13, 9, 2], # 8 vertices
-              [1, 9, 2, 20, 3, 16, 4, 19, 5, 11, 8, 7, 18, 17, 13, 12, 15, 14, 6, 10], # 10 vertices
-              [1, 12, 2, 15, 3, 28, 4, 26, 5, 21, 6, 25, 7, 27, 9, 8, 11, 10, 23, 22, 20, 19, 14, 13, 17, 16, 18, 24], # 14 vertices
-              [1, 36, 2, 33, 3, 18, 4, 23, 5, 22, 6, 35, 7, 28, 8, 32, 9, 34, 31, 30, 27, 26, 11, 10, 15, 14, 13, 12, 25, 24, 17, 16, 20, 19, 21, 29], # 18 vertices
-              [6, 9, 11, 3, 10, 5, 12, 7, 1, 2, 4, 8]]
+graphCases = []
 caseNum = 4
 
 # retrieving graphs from txt file and generating an array that will be used to generate graphs
     # graph values 
+#requires a filePath to read a txt <- will be a parameter for the function as well
 filePath1 = r"C:\Users\alyan\Downloads\Research\SEML Research (Summer '24 & '25)\SEML-Graph-Generator\User Interface\testUserInput.txt"
 
+# create a single function that generates the whole graph using only an array and the value of k # TODO: will need to add a parameter and a procedure to deal with the value of k
+def graphGen(array, txtFilePath):
+    readLineOutput = readFile(txtFilePath) # readLineOutput will contain an array of elements from each line of the txtFilePath txt (opens and reads file)
+    elements = splitContent(readLineOutput) # splits 
 
-## VVV CAN BE DELETED (testing file reads)
-with open(filePath1) as file: # "with" keyword automatically opens the file and closes it closes file after it is read
-    #fileContents = file.read()
-    #print("File Contents: ", fileContents)
-    readLineOutput = []
-    fileLine = file.readline()
-    fileLine2 = file.readline()
-    #while (file.readline()):
-     #   readLineOutput.append(fileLine)
-    #readLineOutput.append(fileLine)
-    readLineOutput.append(fileLine)
-    readLineOutput.append(fileLine2)
-    print("Read a line of file contents: ", str(readLineOutput))
+    return 1
 
-# with open(filePath1) as file: 
-#    fileContents = file.read()
 
-# ^^^^^ CAN BE DELETED (testing file reads)
+# create a loop that iterates through the array generated using values provided in the txt
+
+
+
 
 # returns array containing elements from each line of the file
 def readFile(filePath):
@@ -60,15 +49,31 @@ def readFile(filePath):
 
 readLineOutput = readFile(filePath1)
 # takes in an array containing elements that each have a line of file input
+#def splitContent(readLineOutput):
+ #   elements = []
+  #  for i in range(0, len(readLineOutput)):
+   #     elements.append(readLineOutput[i].split(','))
+    #    print("Added the following element on iteration #", i, ": ", elements[i])
+   # return elements
+
 def splitContent(readLineOutput):
     elements = []
     for i in range(0, len(readLineOutput)):
-        elements.append(readLineOutput[i].split(','))
+        elements.append([])
+        readArray = readLineOutput[i]
+        for j in range(0, len(readArray)):
+            if ((readArray[j] != '[') and (readArray[j] != ']') and (readArray[j] != ',') and (readArray[j] != ' ')):
+                if (readArray[j] == 'k'):
+                    break
+                elements[i].append(readArray[j])
+        #elements.append(readLineOutput[i].split(','))
+        print("Added the following element on iteration #", i, ": ", elements[i])
     return elements
+
 
 elements = splitContent(readLineOutput)
 
-toExecute1 = 1 
+toExecute1 = 1
 
 # [INSERT ARRAY OF VALUES HERE]
 
@@ -237,16 +242,6 @@ for i in range(len(edgeCoordPoints)):
     # SEMLgraph.add_node(7,pos=(-4,-2),node_color='gray') <- command format for below
     SEMLgraph.add_node(edges[i], pos = edgeCoordPoints[i], node_color = 'gray')
     #    SEMLgraph.add_node(edges[i], pos = (edgeCoordPoints[i][0], edgeCoordPoints[i][1]), node_color = 'gray')
-
-
-# create a single function that generates the whole graph using only an array and the value of k # TODO: will need to add a parameter and a procedure to deal with the value of k
-def graphGen(array):
-
-
-    return 1
-
-
-# create a loop that iterates through the array generated using values provided in the txt
 
 
 
