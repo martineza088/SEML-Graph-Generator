@@ -5,6 +5,10 @@ import matplotlib.pyplot as mp
 #importing math library to calculate sine and cosine values
 import math as math
 
+# value of k will be a global variable, default value will be 0 (will change later on)
+k = 0
+
+
 #creating this variable for convenience and for more readable code
 pi = math.pi # PIF (place in function)
 print("pi:", pi)
@@ -20,7 +24,7 @@ filePath1 = r"C:\Users\alyan\Downloads\Research\SEML Research (Summer '24 & '25)
 # create a single function that generates the whole graph using only an array and the value of k # TODO: will need to add a parameter and a procedure to deal with the value of k
 def graphGen(array, txtFilePath):
     readLineOutput = readFile(txtFilePath) # readLineOutput will contain an array of elements from each line of the txtFilePath txt (opens and reads file)
-    elements = splitContent(readLineOutput) # splits 
+    elements = splitContent(readLineOutput) # splits and edits/reformats readLineOutput to be valid input for functions that create the graph
 
     return 1
 
@@ -56,21 +60,68 @@ readLineOutput = readFile(filePath1)
     #    print("Added the following element on iteration #", i, ": ", elements[i])
    # return elements
 
+#def splitContent(readLineOutput):# <- PROBLEM: splits values that have more than one digit (ex: '1', '0' instead of '10')
+ #   elements = []
+  #  for i in range(0, len(readLineOutput)):
+   #     elements.append([])
+    #    readArray = readLineOutput[i]
+     #   for j in range(0, len(readArray)):
+      #      if ((readArray[j] != '[') and (readArray[j] != ']') and (readArray[j] != ',') and (readArray[j] != ' ')):
+       #         if (readArray[j] == 'k'):
+        #            break
+         #       elements[i].append(int(readArray[j]))
+        #elements.append(readLineOutput[i].split(','))
+       # print("Added the following element on iteration #", i, ": ", elements[i])
+   # return elements
+
+# working on first implementation of splitContent except this time I'll read from the arrays that result from splitting all the elements in readLineOutput with a ','
+# PROBLEM: does not organize elements in the array as intended, elements continue to contain non-integer values so they cannot be casted as integers
+# def splitContent(readLineOutput):
+  #  elements = []
+    # splitElements = []
+    # for i in range(0, len(readLineOutput)):
+     #   splitElements.append(readLineOutput[i].split(','))
+      #  elements.append([])
+   # print("splitElements: ", splitElements)
+   # print("elements after preloading empty arrays: ", elements)
+   # for i in range(0, len(splitElements)):
+    #    splitElementsEntry = splitElements[i]
+     #   print("This is splitElementsEntry: ", splitElementsEntry)
+      #  for j in range(0, len(splitElementsEntry)):
+        #    if ((splitElementsEntry[j] != '[') and (splitElementsEntry[j] != ']') and (splitElementsEntry[j] != ',') and (splitElementsEntry[j] != ' ')):
+            #    if (splitElementsEntry[j] == 'k'):
+                #    break
+               # elements[i].append(splitElementsEntry[j]) #elements[i].append(int(splitElementsEntry[j]))
+      #  print("Added the following element on iteration #", i, ": ", elements[i], '\n')
+   # return elements
+
+# returns false if element contains a non-integer, true if it can be casted as an integer
+def intCheck(element):
+    intStatus = True
+    # testing out try-block: https://www.programiz.com/online-compiler/6GwF7XyQRNSby
+    try:
+        potentialInt = int(element)
+    except: # if there's an error
+        intStatus = False
+    return intStatus
+
+# will continue with third implementation of splitContent, but will use outside functions to determine if elements of splitElements contain non-int characters, then will remove these non-int characters if present
 def splitContent(readLineOutput):
     elements = []
+    splitElements = []
     for i in range(0, len(readLineOutput)):
-        elements.append([])
-        readArray = readLineOutput[i]
-        for j in range(0, len(readArray)):
-            if ((readArray[j] != '[') and (readArray[j] != ']') and (readArray[j] != ',') and (readArray[j] != ' ')):
-                if (readArray[j] == 'k'):
-                    break
-                elements[i].append(readArray[j])
-        #elements.append(readLineOutput[i].split(','))
-        print("Added the following element on iteration #", i, ": ", elements[i])
-    return elements
+        splitElements.append(readLineOutput[i].split(','))
+        elements.append([]) # preloading elements array with an amount of empty subarrays that matches # of lines in the input file (to make it easier to )
+    print("splitElements: ", splitElements)
+    print("elements after preloading empty arrays: ", elements)
+
+    for i in range(0, len(splitElements)): # check if any of the elements contain a non-int value using the intCheck function
+        splitElementsSubarray = splitElements[i]
 
 
+        # if the intCheck function returns true, call the removeNonInts function on this value, then append the value to the array that will be returned
+        # if it returns false, append value to the array anyways
+         
 elements = splitContent(readLineOutput)
 
 toExecute1 = 1
