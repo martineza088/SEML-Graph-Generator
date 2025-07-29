@@ -169,12 +169,15 @@ def splitContent(readLineOutput):
 # 1 - Remove all elements that aren't an int and that aren't a comma   
 # 2 - Add the final integer to the k-values array (remove it from its initial location so that it isn't included in the graph values) 
 def splitContent2(readLineOutput):
-    kValues = []
+
     for i in range(len(readLineOutput)):
         lineElement = readLineOutput[i]
         for j in range(len(lineElement)):
             lineChar = lineElement[j]
-            if (intCheck(lineChar) or lineChar)
+            if (intCheck(lineChar) or lineChar == ','):
+                continue
+            else: # if a nonint is found or if a 
+                lineE # LEFT OFF HEREEEEEEEEEEEE (look at line 17 of sketchFile.py)
 
 
 #FOR_RUN elements = splitContent(readLineOutput)

@@ -7,4 +7,8 @@ print("Does it contain", number, "? -> ", testArray.__contains__(number))
 
 word = "why hello there"
 letter = 'wh'
-print("Does /'word'/ contain", letter, "? ->", word.__contains__(letter))
+print("Does 'word' contain", letter, "? ->", word.__contains__(letter))
+
+word2 = "hello"
+if (word2 == "hello"):
+    print("This code works")
