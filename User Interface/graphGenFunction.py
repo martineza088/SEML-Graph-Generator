@@ -52,7 +52,7 @@ def readFile(filePath):
     return readLineOutput
 
 readLineOutput = readFile(filePath1)
-# takes in an array containing elements that each have a line of file input
+# takes in an array containing elements that each have a line of file input and returns an array containing subarrays of graph values formatted as valid input for the graph generation functions
 #def splitContent(readLineOutput):
  #   elements = []
   #  for i in range(0, len(readLineOutput)):
@@ -95,7 +95,7 @@ readLineOutput = readFile(filePath1)
       #  print("Added the following element on iteration #", i, ": ", elements[i], '\n')
    # return elements
 
-# returns false if element contains a non-integer, true if it can be casted as an integer
+# returns false if element contains a non-integer, true if it can be casted as an integer (question: is it an integer?  answer: T/F)
 def intCheck(element):
     intStatus = True
     # testing out try-block: https://www.programiz.com/online-compiler/6GwF7XyQRNSby
@@ -104,6 +104,27 @@ def intCheck(element):
     except: # if there's an error
         intStatus = False
     return intStatus
+
+# checks an entire array to see if it contains purely integer values 
+def intArrayCheck(array):
+    intStatus = True
+    for i in range(len(array)):
+        if (!(intCheck(array[i]))):
+            intStatus = False
+            # LEFT OF HEREEE : TRYING TO MAKE IT SO THAT IT'LL RETURN THE INDEX WHERE IT FINDS THE NONINT AND RETURNS IT ALONG WITH INT STATUS
+            break
+    
+    if (intStatus = False):
+    return intStatus
+    
+# takes an array that only contains values that can each be successfully casted into an integer as input. It creates a new array containing the casted version of each value in the original array
+def intArrayGen(nonIntArray):
+    castedArray = []
+    for i in range(len(nonIntArray)):
+        castedValue = int(nonIntArray[i])
+        castedArray.append(castedValue)
+    
+    return castedArray
 
 # will continue with third implementation of splitContent, but will use outside functions to determine if elements of splitElements contain non-int characters, then will remove these non-int characters if present
 def splitContent(readLineOutput):
@@ -117,6 +138,12 @@ def splitContent(readLineOutput):
 
     for i in range(0, len(splitElements)): # check if any of the elements contain a non-int value using the intCheck function
         splitElementsSubarray = splitElements[i]
+        print("This is splitElementsSubarray: ", splitElementsSubarray)
+
+        if(intCheck(splitElementsSubarray)): # if the subarray only contains integers
+            continue
+        else:
+            
 
 
         # if the intCheck function returns true, call the removeNonInts function on this value, then append the value to the array that will be returned
