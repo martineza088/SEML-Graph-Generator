@@ -6,7 +6,7 @@ import matplotlib.pyplot as mp
 import math as math
 
 # value of k will be a global variable, default value will be 0 (will change later on)
-k = 0
+#k = 0
 
 
 #creating this variable for convenience and for more readable code
@@ -120,7 +120,7 @@ def intArrayCheck(array):
     return intStatus, nonIntIndex
 
 # testing intArrayCheck
-nonIntArray = ['2', '4', '0000007', '7']
+nonIntArray = ['9', '4', ' -9 ', '7']
 boolOfIAC, indexOfIAC = intArrayCheck(nonIntArray) # IAC = intArrayCheck function
 print("After running intArrayCheck on nonIntArray: bool result ->", boolOfIAC, " | index result -> ", indexOfIAC)
 
@@ -134,29 +134,49 @@ def intArrayGen(nonIntArray):
     
     return castedArray
 
+def removeNonInts(array):
+    for i in range(len(array)):
+        arrayElement = array[i]
+        if (arrayElement.__contains__('k'))
+        if(intCheck(array[i])):
+            continue
+        else:
+
 # will continue with third implementation of splitContent, but will use outside functions to determine if elements of splitElements contain non-int characters, then will remove these non-int characters if present
 def splitContent(readLineOutput):
     elements = []
+    kValues = []
     splitElements = []
     for i in range(0, len(readLineOutput)):
         splitElements.append(readLineOutput[i].split(','))
-        elements.append([]) # preloading elements array with an amount of empty subarrays that matches # of lines in the input file (to make it easier to )
+        elements.append([]) # preloading elements array with an amount of empty subarrays that matches # of lines in the input file 
+        kValues.append([]) 
     print("splitElements: ", splitElements)
     print("elements after preloading empty arrays: ", elements)
 
-    #FOR_RUN for i in range(0, len(splitElements)): # check if any of the elements contain a non-int value using the intCheck function
-        #FOR_RUN splitElementsSubarray = splitElements[i]
-        #FOR_RUN print("This is splitElementsSubarray: ", splitElementsSubarray)
-
-        #FOR_RUN if(intCheck(splitElementsSubarray)): # if the subarray only contains integers
-            #FOR_RUN continue
-        #FOR_RUN else:
+    for i in range(0, len(splitElements)): # check if any of the elements contain a non-int value using the intCheck function
+        splitElementsSubarray = splitElements[i]  # contains an subarray of separated elements 
+        print("This is splitElementsSubarray: ", splitElementsSubarray)
+        
+        elements[i], kValues[i] = removeNonInts(splitElementsSubarray)
             
 
 
-        # if the intCheck function returns true, call the removeNonInts function on this value, then append the value to the array that will be returned
+        # if the intCheck function returns true, call the removeNonInts function on this value, then append the value to the array that will be returned (elements array)
         # if it returns false, append value to the array anyways
-         
+
+# 4th draft of splitContent function -> go through each element in readLineOutput and do 2 things: 
+# 1 - Remove all elements that aren't an int and that aren't a comma   
+# 2 - Add the final integer to the k-values array (remove it from its initial location so that it isn't included in the graph values) 
+def splitContent2(readLineOutput):
+    kValues = []
+    for i in range(len(readLineOutput)):
+        lineElement = readLineOutput[i]
+        for j in range(len(lineElement)):
+            lineChar = lineElement[j]
+            if (intCheck(lineChar) or lineChar)
+
+
 #FOR_RUN elements = splitContent(readLineOutput)
 
 toExecute1 = 1
