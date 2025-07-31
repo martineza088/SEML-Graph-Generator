@@ -5,10 +5,6 @@ import matplotlib.pyplot as mp
 #importing math library to calculate sine and cosine values
 import math as math
 
-# value of k will be a global variable, default value will be 0 (will change later on)
-#k = 0
-
-
 #creating this variable for convenience and for more readable code
 pi = math.pi # PIF (place in function)
 print("pi:", pi)
@@ -134,31 +130,31 @@ def intArrayGen(nonIntArray):
     
     return castedArray
 
-def removeNonInts(array):
-    for i in range(len(array)):
-        arrayElement = array[i]
-        if (arrayElement.__contains__('k'))
-        if(intCheck(array[i])):
-            continue
-        else:
+# FOR_RUN def removeNonInts(array):
+    # FOR_RUN for i in range(len(array)):
+       # FOR_RUN  arrayElement = array[i]
+        # FOR_RUN if (arrayElement.__contains__('k'))
+        # FOR_RUN if(intCheck(array[i])):
+        # FOR_RUN     continue
+        # FOR_RUN else:
 
 # will continue with third implementation of splitContent, but will use outside functions to determine if elements of splitElements contain non-int characters, then will remove these non-int characters if present
-def splitContent(readLineOutput):
-    elements = []
-    kValues = []
-    splitElements = []
-    for i in range(0, len(readLineOutput)):
-        splitElements.append(readLineOutput[i].split(','))
-        elements.append([]) # preloading elements array with an amount of empty subarrays that matches # of lines in the input file 
-        kValues.append([]) 
-    print("splitElements: ", splitElements)
-    print("elements after preloading empty arrays: ", elements)
+# FOR_RUN def splitContent(readLineOutput):
+    # FOR_RUN elements = []
+    # FOR_RUN kValues = []
+    # FOR_RUN splitElements = []
+    # FOR_RUN for i in range(0, len(readLineOutput)):
+        # FOR_RUN splitElements.append(readLineOutput[i].split(','))
+        # FOR_RUN elements.append([]) # preloading elements array with an amount of empty subarrays that matches # of lines in the input file 
+        # FOR_RUN kValues.append([]) 
+    # FOR_RUN print("splitElements: ", splitElements)
+    # FOR_RUN print("elements after preloading empty arrays: ", elements)
 
-    for i in range(0, len(splitElements)): # check if any of the elements contain a non-int value using the intCheck function
-        splitElementsSubarray = splitElements[i]  # contains an subarray of separated elements 
-        print("This is splitElementsSubarray: ", splitElementsSubarray)
+    # FOR_RUN for i in range(0, len(splitElements)): # check if any of the elements contain a non-int value using the intCheck function
+        # FOR_RUN splitElementsSubarray = splitElements[i]  # contains an subarray of separated elements 
+        # FOR_RUN print("This is splitElementsSubarray: ", splitElementsSubarray)
         
-        elements[i], kValues[i] = removeNonInts(splitElementsSubarray)
+        # FOR_RUN elements[i], kValues[i] = removeNonInts(splitElementsSubarray)
             
 
 
@@ -168,18 +164,35 @@ def splitContent(readLineOutput):
 # 4th draft of splitContent function -> go through each element in readLineOutput and do 2 things: 
 # 1 - Remove all elements that aren't an int and that aren't a comma   
 # 2 - Add the final integer to the k-values array (remove it from its initial location so that it isn't included in the graph values) 
-def splitContent2(readLineOutput):
-
+# output will contain two arrays, one containing graph values in a valid format for the graphGen function and another containing k-values for each graph
+def splitContent(readLineOutput):
+    kValues = [] # will store the k-values for each graph
+    formattedInput = [] # the list containing split, integer elements from readLineOutput
     for i in range(len(readLineOutput)):
-        lineElement = readLineOutput[i]
+        lineElement = readLineOutput[i]   # edit line element to only include non-integers
+        elementList = list(lineElement)  # list version of the lineElement string (transforming immutable string into mutable object)
+        print("Element list: ", elementList)
         for j in range(len(lineElement)):
-            lineChar = lineElement[j]
-            if (intCheck(lineChar) or lineChar == ','):
+            if (intCheck(elementList[j]) or elementList[j] == ','):
                 continue
-            else: # if a nonint is found or if a 
-                lineE # LEFT OFF HEREEEEEEEEEEEE (look at line 17 of sketchFile.py)
+            else: # if a nonint is found or if a k is detected
+                elementList[j] = ''
+        removedNonIntsString = ''.join(elementList) # join the element list
+        splitList = removedNonIntsString.split(',') # splits the string into an array by commas
 
+        for j in range(len(splitList)):
+            if (intCheck(splitList[j])):
+                formattedInput.append(splitList[j])
+    
+    # will remove all the last elements in each subarray from formattedInput and add it to the kValues array
+    for i in range(len(formattedInput)):
+        kValues.append(formattedInput[-1])
+        formattedInput.remove(formattedInput)
+        # LEFT OF HEREEEE -> will make formattedInput immutable (string) first by using join function and then will follow same process as above to remove last element by index (removing [-1])
+    
+    print("Element list AFTER removing nonints and joining char's -> ", elementList)
 
+splitContent(readLineOutput)
 #FOR_RUN elements = splitContent(readLineOutput)
 
 toExecute1 = 1
@@ -188,8 +201,7 @@ toExecute1 = 1
 
 # transform this into an array of file contents (each element is a line in the file)
     # track the value of k !!
-print("The value of element: ", elements)
-k = 0
+# FOR_RUN print("The value of element: ", elements)
 
 
 graphValues = graphCases[caseNum]
