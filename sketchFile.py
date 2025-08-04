@@ -29,3 +29,6 @@ testStringParanthesized = testArray3[3], testArray3[2]
 testStringList = list(testStringParanthesized)
 testString = ''.join(testStringList)
 print("testString: ", testString)
+
+anotherString = 'entertain '
+print("length of anotherString: ", len(anotherString)) # length of a string = number of characters in the string

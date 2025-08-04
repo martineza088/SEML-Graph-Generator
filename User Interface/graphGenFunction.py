@@ -178,9 +178,10 @@ def splitContent(readLineOutput):
         elementList = list(lineElement)  # list version of the lineElement string (transforming immutable string into mutable object)
         print("Element list: ", elementList)
         for j in range(len(lineElement)):
-            if (intCheck(elementList[j]) or elementList[j] == ','):
+            if (intCheck(elementList[j]) or elementList[j] == ',' or elementList[j] == '-'):
                 continue
             else: # if a nonint is found or if a k is detected
+                print("this element is being replaced at i =", i, "and j =", j, ": ", elementList[j])
                 elementList[j] = ''
         removedNonIntsString = ''.join(elementList) # join the element list
         splitList = removedNonIntsString.split(',') # splits the string by commas and turns it into an array 
