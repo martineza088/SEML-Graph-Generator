@@ -168,6 +168,11 @@ def intArrayGen(nonIntArray):
 def splitContent(readLineOutput):
     kValues = [] # will store the k-values for each graph
     formattedInput = [] # the list containing split, integer elements from readLineOutput
+    # pre-structuring formattedInput to be subarrays that can be added to later on
+    for i in range(len(readLineOutput)):
+        formattedInput.append([])
+    print("formattedInput after prestructuring: ", formattedInput)
+    
     for i in range(len(readLineOutput)):
         lineElement = readLineOutput[i]   # edit line element to only include non-integers
         elementList = list(lineElement)  # list version of the lineElement string (transforming immutable string into mutable object)
@@ -178,18 +183,23 @@ def splitContent(readLineOutput):
             else: # if a nonint is found or if a k is detected
                 elementList[j] = ''
         removedNonIntsString = ''.join(elementList) # join the element list
-        splitList = removedNonIntsString.split(',') # splits the string into an array by commas
+        splitList = removedNonIntsString.split(',') # splits the string by commas and turns it into an array 
+        print("splitList at i = ", i, " ->", splitList)
 
         for j in range(len(splitList)):
             if (intCheck(splitList[j])):
-                formattedInput.append(splitList[j])
-    
+
+                formattedInput[i].append(int(splitList[j]))
+
+    print("This is formattedInput ->", formattedInput)
     # will remove all the last elements in each subarray from formattedInput and add it to the kValues array
     for i in range(len(formattedInput)):
-        kValues.append(formattedInput[-1])
-        formattedInput.remove(formattedInput)
+        kValues.append(formattedInput[i][-1])
         # LEFT OF HEREEEE -> will make formattedInput immutable (string) first by using join function and then will follow same process as above to remove last element by index (removing [-1])
-    
+        formattedInput[i][-1] = ''
+        #listCast = formattedInput
+
+        # making this immutable to remove the right value (done to avoid a bug caused by having 2 of the same value)
     print("Element list AFTER removing nonints and joining char's -> ", elementList)
 
 splitContent(readLineOutput)

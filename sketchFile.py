@@ -21,3 +21,11 @@ print("testArray2 ->", testArray2)
 
 testArray2.remove(1)
 print("testArray2 after removal ->", testArray2)
+
+# testing join function - calling multiple non-consecutive elements from a list and then putting them together using join
+testArray3 = ['oh', 'ok', 'um', 'well']
+testStringParanthesized = testArray3[3], testArray3[2]
+# testString = ''.join(testArray3[0], testArray3[3]) <- join function only takes one parameter
+testStringList = list(testStringParanthesized)
+testString = ''.join(testStringList)
+print("testString: ", testString)
