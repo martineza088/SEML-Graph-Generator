@@ -47,49 +47,10 @@ def readFile(filePath):
     file.close()
     return readLineOutput
 
+
+
+
 readLineOutput = readFile(filePath1)
-# takes in an array containing elements that each have a line of file input and returns an array containing subarrays of graph values formatted as valid input for the graph generation functions
-#def splitContent(readLineOutput):
- #   elements = []
-  #  for i in range(0, len(readLineOutput)):
-   #     elements.append(readLineOutput[i].split(','))
-    #    print("Added the following element on iteration #", i, ": ", elements[i])
-   # return elements
-
-#def splitContent(readLineOutput):# <- PROBLEM: splits values that have more than one digit (ex: '1', '0' instead of '10')
- #   elements = []
-  #  for i in range(0, len(readLineOutput)):
-   #     elements.append([])
-    #    readArray = readLineOutput[i]
-     #   for j in range(0, len(readArray)):
-      #      if ((readArray[j] != '[') and (readArray[j] != ']') and (readArray[j] != ',') and (readArray[j] != ' ')):
-       #         if (readArray[j] == 'k'):
-        #            break
-         #       elements[i].append(int(readArray[j]))
-        #elements.append(readLineOutput[i].split(','))
-       # print("Added the following element on iteration #", i, ": ", elements[i])
-   # return elements
-
-# working on first implementation of splitContent except this time I'll read from the arrays that result from splitting all the elements in readLineOutput with a ','
-# PROBLEM: does not organize elements in the array as intended, elements continue to contain non-integer values so they cannot be casted as integers
-# def splitContent(readLineOutput):
-  #  elements = []
-    # splitElements = []
-    # for i in range(0, len(readLineOutput)):
-     #   splitElements.append(readLineOutput[i].split(','))
-      #  elements.append([])
-   # print("splitElements: ", splitElements)
-   # print("elements after preloading empty arrays: ", elements)
-   # for i in range(0, len(splitElements)):
-    #    splitElementsEntry = splitElements[i]
-     #   print("This is splitElementsEntry: ", splitElementsEntry)
-      #  for j in range(0, len(splitElementsEntry)):
-        #    if ((splitElementsEntry[j] != '[') and (splitElementsEntry[j] != ']') and (splitElementsEntry[j] != ',') and (splitElementsEntry[j] != ' ')):
-            #    if (splitElementsEntry[j] == 'k'):
-                #    break
-               # elements[i].append(splitElementsEntry[j]) #elements[i].append(int(splitElementsEntry[j]))
-      #  print("Added the following element on iteration #", i, ": ", elements[i], '\n')
-   # return elements
 
 # returns false if element is a non-integer, true if it can be casted as an integer (question: is it an integer?  answer: T/F)
 def intCheck(element):
@@ -125,40 +86,11 @@ def intArrayGen(nonIntArray):
     
     return castedArray
 
-# FOR_RUN def removeNonInts(array):
-    # FOR_RUN for i in range(len(array)):
-       # FOR_RUN  arrayElement = array[i]
-        # FOR_RUN if (arrayElement.__contains__('k'))
-        # FOR_RUN if(intCheck(array[i])):
-        # FOR_RUN     continue
-        # FOR_RUN else:
 
-# will continue with third implementation of splitContent, but will use outside functions to determine if elements of splitElements contain non-int characters, then will remove these non-int characters if present
-# FOR_RUN def splitContent(readLineOutput):
-    # FOR_RUN elements = []
-    # FOR_RUN kValues = []
-    # FOR_RUN splitElements = []
-    # FOR_RUN for i in range(0, len(readLineOutput)):
-        # FOR_RUN splitElements.append(readLineOutput[i].split(','))
-        # FOR_RUN elements.append([]) # preloading elements array with an amount of empty subarrays that matches # of lines in the input file 
-        # FOR_RUN kValues.append([]) 
-    # FOR_RUN print("splitElements: ", splitElements)
-    # FOR_RUN print("elements after preloading empty arrays: ", elements)
-
-    # FOR_RUN for i in range(0, len(splitElements)): # check if any of the elements contain a non-int value using the intCheck function
-        # FOR_RUN splitElementsSubarray = splitElements[i]  # contains an subarray of separated elements 
-        # FOR_RUN print("This is splitElementsSubarray: ", splitElementsSubarray)
-        
-        # FOR_RUN elements[i], kValues[i] = removeNonInts(splitElementsSubarray)
-            
-
-
-        # if the intCheck function returns true, call the removeNonInts function on this value, then append the value to the array that will be returned (elements array)
-        # if it returns false, append value to the array anyways
-
-# 4th draft of splitContent function -> go through each element in readLineOutput and do 2 things: 
-# 1 - Remove all elements that aren't an int and that aren't a comma   
-# 2 - Add the final integer to the k-values array (remove it from its initial location so that it isn't included in the graph values) 
+# Takes in an array containing elements that each have a line of file input and returns an array containing subarrays of graph values formatted as valid input for the graph generation functions
+# Steps: goes through each element in readLineOutput and does 2 things: 
+# 1 - Removes all elements that aren't an int and that aren't a comma   
+# 2 - Adds the final integer to the k-values array (removes it from its initial location so that it isn't included in the graph values) 
 # output will contain two arrays, one containing graph values in a valid format for the graphGen function and another containing k-values for each graph
 def splitContent(readLineOutput):
     kValues = [] # will store the k-values for each graph
