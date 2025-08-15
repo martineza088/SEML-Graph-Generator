@@ -115,11 +115,6 @@ def intArrayCheck(array):
     
     return intStatus, nonIntIndex
 
-# testing intArrayCheck
-nonIntArray = ['9', '4', ' -9 ', '7']
-boolOfIAC, indexOfIAC = intArrayCheck(nonIntArray) # IAC = intArrayCheck function
-print("After running intArrayCheck on nonIntArray: bool result ->", boolOfIAC, " | index result -> ", indexOfIAC)
-
 
 # takes an array that only contains values that can each be successfully casted into an integer as input. It creates a new array containing the casted version of each value in the original array
 def intArrayGen(nonIntArray):
@@ -178,19 +173,31 @@ def splitContent(readLineOutput):
         elementList = list(lineElement)  # list version of the lineElement string (transforming immutable string into mutable object)
         print("Element list: ", elementList)
         for j in range(len(lineElement)):
-            if (intCheck(elementList[j]) or elementList[j] == ',' or elementList[j] == '-'):
+            if (intCheck(elementList[j]) or elementList[j] == ',' or elementList[j] == '-' or elementList[j] == '='):
                 continue
             else: # if a nonint is found or if a k is detected
                 print("this element is being replaced at i =", i, "and j =", j, ": ", elementList[j])
                 elementList[j] = ''
         removedNonIntsString = ''.join(elementList) # join the element list
-        splitList = removedNonIntsString.split(',') # splits the string by commas and turns it into an array 
+        splitByEqual = removedNonIntsString.split('=') # LEFT OFF HEREEEE (outdated): split by '=' BEFORE nonints are removed from the string
+        splitList = removedNonIntsString.split(',') # splits the string by commas and turns it into an array
         print("splitList at i = ", i, " ->", splitList)
+        print("This is splitByEqual: ", splitByEqual) #LEFT OFF HEREEE : trying to figure out how to properly split the array by the '='
+        print("This is splitByEqual[-1]: ", splitByEqual[-1])
+        kValues.append(int(splitByEqual[-1]))
+        print("This is kValues at i =", i, " ->", kValues)
 
-        for j in range(len(splitList)):
-            if (intCheck(splitList[j])):
+        # remove the last element of splitByEqual and split the content of the first index [0] by ','
+        splittingIndex0 = splitByEqual[0].split(',')
+        print("This is splittingIndex0: ", splittingIndex0)
 
-                formattedInput[i].append(int(splitList[j]))
+        for j in range(len(splittingIndex0)):
+            passFailIntCheckValue = splittingIndex0[j]
+            if (intCheck(splittingIndex0[j])):
+
+                formattedInput[i].append(int(splittingIndex0[j]))
+            else: #TESTING
+                print("\n\n\nTHE FOLLOWING VALUE DID NOT PASS THE TEST: ", passFailIntCheckValue, "\n\n\n")
 
     print("This is formattedInput ->", formattedInput)
     # will remove all the last elements in each subarray from formattedInput and add it to the kValues array

@@ -31,4 +31,9 @@ testString = ''.join(testStringList)
 print("testString: ", testString)
 
 anotherString = 'entertain '
-print("length of anotherString: ", len(anotherString)) # length of a string = number of characters in the string
+print("length of anotherString: ", len(anotherString)) # length of a string = number of characters in the string, including spaces\
+
+mockValues = "[4, 8, 1, 7, 3, 6, 5, 2] k = -1000]"
+print("\n\nThis is mockValues: ", mockValues)
+mockValuesSplit = mockValues.split("=")
+print("After splitting mockValues by '=': ", mockValuesSplit)
