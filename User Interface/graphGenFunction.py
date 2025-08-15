@@ -194,11 +194,11 @@ def splitContent(readLineOutput):
         for j in range(len(splittingIndex0)):
             passFailIntCheckValue = splittingIndex0[j]
             if (intCheck(splittingIndex0[j])):
-
                 formattedInput[i].append(int(splittingIndex0[j]))
-            else: #TESTING
-                print("\n\n\nTHE FOLLOWING VALUE DID NOT PASS THE TEST: ", passFailIntCheckValue, "\n\n\n")
+            else: 
+                print("\n\n\nThe following value cannot be read as an integer: ", passFailIntCheckValue, "\n\n\n")
 
+    ''' This code might not be necessary to include in the function
     print("This is formattedInput ->", formattedInput)
     # will remove all the last elements in each subarray from formattedInput and add it to the kValues array
     for i in range(len(formattedInput)):
@@ -210,16 +210,17 @@ def splitContent(readLineOutput):
         # making this immutable to remove the right value (done to avoid a bug caused by having 2 of the same value)
     print("Element list AFTER removing nonints and joining char's -> ", elementList)
 
-splitContent(readLineOutput)
+    '''
+    return formattedInput, kValues
+
+graphValuesFormatted, valuesOfK = splitContent(readLineOutput)
+
+print("\n\nFinal values returned by splitContent: valuesOfK -> ", valuesOfK, "\ngraphValuesFormatted -> ", graphValuesFormatted, "\n\n")
 #FOR_RUN elements = splitContent(readLineOutput)
 
 toExecute1 = 1
 
 # [INSERT ARRAY OF VALUES HERE]
-
-# transform this into an array of file contents (each element is a line in the file)
-    # track the value of k !!
-# FOR_RUN print("The value of element: ", elements)
 
 
 graphValues = graphCases[caseNum]
