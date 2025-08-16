@@ -37,3 +37,16 @@ mockValues = "[4, 8, 1, 7, 3, 6, 5, 2] k = -1000]"
 print("\n\nThis is mockValues: ", mockValues)
 mockValuesSplit = mockValues.split("=")
 print("After splitting mockValues by '=': ", mockValuesSplit)
+
+'''
+# is it possible to import a function from another file in a function?
+# note: i moved this file into the User Interface so that it could access the file that the other function is in
+def testing():
+    from SEMLvalueSorting import VEarrayGen
+    arrayOfGraphValues = [6, 9, 11, 3, 10, 5, 12, 7, 1, 2, 4, 8] # would have to be in a proper format already
+    vertices, edges = VEarrayGen(arrayOfGraphValues)
+    print("It works! Vertices -> ", vertices, "Edges -> ", edges)
+
+testing()
+
+'''

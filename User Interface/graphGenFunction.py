@@ -17,7 +17,7 @@ caseNum = 4
 #requires a filePath to read a txt <- will be a parameter for the function as well
 filePath1 = r"C:\Users\alyan\Downloads\Research\SEML Research (Summer '24 & '25)\SEML-Graph-Generator\User Interface\testUserInput.txt"
 
-# create a single function that generates the whole graph using only an array and the value of k # TODO: will need to add a parameter and a procedure to deal with the value of k
+# a single function that generates the whole graph using only an array and the value of k # TODO: will need to add a parameter and a procedure to deal with the value of k
 def graphGen(array, txtFilePath):
     readLineOutput = readFile(txtFilePath) # readLineOutput will contain an array of elements from each line of the txtFilePath txt (opens and reads file)
     elements = splitContent(readLineOutput) # splits and edits/reformats readLineOutput to be valid input for functions that create the graph
