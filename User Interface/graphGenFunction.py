@@ -17,41 +17,7 @@ caseNum = 4
 #requires a filePath to read a txt <- will be a parameter for the function as well
 filePath1 = r"C:\Users\alyan\Downloads\Research\SEML Research (Summer '24 & '25)\SEML-Graph-Generator\User Interface\testUserInput.txt"
 
-# a single function that generates the whole graph using only an array and the value of k # TODO: will need to add a parameter and a procedure to deal with the value of k
-def graphGen(array, txtFilePath):
-    SEML_graphValues, SEML_kValues = readFile(txtFilePath) 
-    
-    return 1
 
-
-# create a loop that iterates through the array generated using values provided in the txt
-
-
-
-
-# returns a 2D array containing all the SEML graph values from the txt file in the proper format and a 1D array containing the k-values for each graph
-def readFile(filePath):
-    file = open(filePath)
-    c1 = 0
-    readLineOutput = [] # readLineOutput will contain an array of elements from each line of the txtFilePath txt (opens and reads file)
-    fileLine = file.readline()
-    readLineOutput.append(fileLine)
-
-    # loops infinitely until there are no more arrays to read (or it won't continue if the file is empty)
-    while ((fileLine != '') and (fileLine != '\n')):
-        fileLine = file.readline()
-        if (fileLine != ''):
-            readLineOutput.append(fileLine)
-        print("Second attempt at file content reading: ", str(readLineOutput))
-    file.close()
-
-    SEML_graphValues, SEML_kValues = splitContent(readLineOutput) # splits and edits/reformats readLineOutput to be valid input for functions that create the graph
-    return SEML_graphValues, SEML_kValues
-
-
-
-
-readLineOutput = readFile(filePath1)
 
 # Helper method for the splitContent function
 # returns false if element is a non-integer, true if it can be casted as an integer (question: is it an integer?  answer: T/F)
@@ -117,7 +83,7 @@ def splitContent(readLineOutput):
         splitByEqual = removedNonIntsString.split('=') # LEFT OFF HEREEEE (outdated): split by '=' BEFORE nonints are removed from the string
         splitList = removedNonIntsString.split(',') # splits the string by commas and turns it into an array
         print("splitList at i = ", i, " ->", splitList)
-        print("This is splitByEqual: ", splitByEqual) #LEFT OFF HEREEE : trying to figure out how to properly split the array by the '='
+        print("This is splitByEqual: ", splitByEqual) #LEFT OFF HEREEE (outdated): trying to figure out how to properly split the array by the '='
         print("This is splitByEqual[-1]: ", splitByEqual[-1])
         kValues.append(int(splitByEqual[-1]))
         print("This is kValues at i =", i, " ->", kValues)
@@ -148,6 +114,33 @@ def splitContent(readLineOutput):
     '''
     return formattedInput, kValues
 
+
+# returns a 2D array containing all the SEML graph values from the txt file in the proper format and a 1D array containing the k-values for each graph
+def readFile(filePath):
+    file = open(filePath)
+    c1 = 0
+    readLineOutput = [] # readLineOutput will contain an array of elements from each line of the txtFilePath txt (opens and reads file)
+    fileLine = file.readline()
+    readLineOutput.append(fileLine)
+
+    # loops infinitely until there are no more arrays to read (or it won't continue if the file is empty)
+    while ((fileLine != '') and (fileLine != '\n')):
+        fileLine = file.readline()
+        if (fileLine != ''):
+            readLineOutput.append(fileLine)
+        print("Second attempt at file content reading: ", str(readLineOutput))
+    file.close()
+
+    SEML_graphValues, SEML_kValues = splitContent(readLineOutput) # splits and edits/reformats readLineOutput to be valid input for functions that create the graph
+    return SEML_graphValues, SEML_kValues
+
+
+
+
+readLineOutput = readFile(filePath1)
+
+
+
 graphValuesFormatted, valuesOfK = readFile(filePath1)        # TESTING readFile FUNCTION FUNCTIONALITY (NOTE: TESTING FUNCTION FUNCTIONALITY lines should all either be commented out or deleted at the same time since they are all being used interconnectedly right now)
 
 print("\n\nFinal values returned by splitContent: valuesOfK -> ", valuesOfK, "\ngraphValuesFormatted -> ", graphValuesFormatted, "\n\n")    # TESTING readFile FUNCTION FUNCTIONALITY
@@ -168,8 +161,8 @@ toExecute1 = 1
 
 # TESTING graphGen FUNCTION FUNCTIONALITY
 graphValues = graphValuesFormatted[0]           # TESTING graphGen FUNCTION FUNCTIONALITY
-#n = number of nodes in the graph
-n = len(graphValues)/2
+#n = number of nodes in the graph (will use numNodes instead)
+numNodes = len(graphValues)/2
 
 
 
@@ -227,7 +220,7 @@ def coordinateGen(n, r):
 
     print("x_cor -> ", x_cor, " | y_cor -> ", y_cor)
     print("This is anglesDeg: ", anglesDeg) 
-    return x_cor, y_cor
+    return x_cor, y_cor, anglesDeg
 
 
 # Groups the x and y coordinates for each node into a touple. It also assigned directed edges to certain nodes to follow the properties of an SEML graph
@@ -299,6 +292,10 @@ def findMidpoint(point1Tuple, point2Tuple):
     midpointCoord = ((x_point2 + x_point1)/2, (y_point2 + y_point1)/2)
     return midpointCoord
 
+# Identifies the midpoint of all given coordinate tuples, going around 
+# the whole array in a circle to also find the midpoint of the first and last element as well
+# param coordinateTuples: the array of coordinates to find the midpoints of
+# returns: an array containing all the midpoint coordinates found from the given node coordinates 
 def nodeMidpoint(coordinateTuples):
     nodeMidpoints = []
     for i in range(len(coordinateTuples)):
@@ -313,7 +310,8 @@ def nodeMidpoint(coordinateTuples):
 
 
 # applying origin and angle formula
-# requires an array/list of the angles in degrees of each of the nodes in the graph 
+# requires an array/list of the angles in degrees of each of the nodes in the graph
+# param anglesDeg: , should come from coordinatesGen
 def edgeAngleGen(anglesDeg):
     edgeAngleArray = []
     for i1 in range(len(anglesDeg)):
@@ -328,7 +326,7 @@ def edgeAngleGen(anglesDeg):
     return edgeAngleArray
 
 # Helper method for edgeCoordArrayGen, 
-# params r and angle: float values used to calculate coordinates, r should come from the findRadius 
+# params r and angle: float values used to calculate coordinates
 # param origin: a tuple with decimal values representing origin point  
 def edgeCoordGen(r, angle, origin):
     h = origin[0]
@@ -340,6 +338,8 @@ def edgeCoordGen(r, angle, origin):
     return edgeCoord
 
 # Creates an array of edge coordinate tuples and adds these edges to the graph object
+# param r: float value, should come from the loop of graphGen AFTER passing coordinate values into findRadius function
+# param edgeAngleArray: an array of the angle assigned to each edge, should come from edgeAngleGen
 def edgeCoordArrayGen(r, edges, nodeMidpoints, edgeAngleArray):
     edgeCoordPoints = []
     # generating all edge coordinate points
@@ -354,6 +354,49 @@ def edgeCoordArrayGen(r, edges, nodeMidpoints, edgeAngleArray):
         # SEMLgraph.add_node(7,pos=(-4,-2),node_color='gray') <- command format for below
         SEMLgraph.add_node(edges[i], pos = edgeCoordPoints[i], node_color = 'gray')
         #    SEMLgraph.add_node(edges[i], pos = (edgeCoordPoints[i][0], edgeCoordPoints[i][1]), node_color = 'gray')
+
+
+
+
+# A single function that generates all the graphs in the txt file found in txtFilePath
+def graphGen(txtFilePath):
+    SEML_graphValues, SEML_kValues = readFile(txtFilePath) 
+    graphName = "SEMLgraph"
+    # create a loop that iterates through the 2D array containing formatted graph values
+    for i in range(len(SEML_graphValues)):
+        currentGraph = SEML_graphValues[i]
+        n = len(currentGraph)/2
+        
+        # calling sortNodeValues
+        vertices, edges, vHead, vTail, r = sortNodeValues(currentGraph, n)
+
+        # calling coordinateGen
+        x_cor, y_cor, anglesDeg = coordinateGen(n, r)
+
+        #calling groupingCoordinates
+        coordinateTuples, edgeTuples = groupingCoordinates(x_cor, y_cor, vertices, vHead, vTail)
+
+        #calling addEdges
+        addEdges(graphName, edgeTuples)
+
+        # calling findRadius, updating the value of r
+        r = findRadius((x_cor[0], y_cor[0]), (x_cor[1], y_cor[1]))
+
+        # calling nodeMidpoint
+        nodeMidpoints = nodeMidpoint(coordinateTuples)
+
+        # calling edgeAngleGen
+        edgeAngleArray = edgeAngleGen(anglesDeg)
+
+        # calling edgeCoordArrayGen
+        edgeCoordArrayGen(r, edges, nodeMidpoints, edgeAngleArray)    
+    return 1
+
+
+# moment of truth: 
+print("\n\n\nVVVVVVVVVVVVVVVVV THIS IS GRAPH GEN VVVVVVVVVVVVVVVVVVVVVVVV\n\n\n")
+graphGen(filePath1)
+print("\n\n\n^^^^^^^^^^^^^^^^^ THIS IS GRAPH GEN ^^^^^^^^^^^^^^^^^^^^^^^^\n\n\n")
 
 
 

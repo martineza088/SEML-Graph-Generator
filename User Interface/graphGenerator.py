@@ -15,7 +15,7 @@ graphCases = [[4, 8, 1, 7, 3, 6, 5, 2], [1, 6, 2, 10, 3, 12, 5, 4, 8, 7, 9, 11],
               [1, 12, 2, 15, 3, 28, 4, 26, 5, 21, 6, 25, 7, 27, 9, 8, 11, 10, 23, 22, 20, 19, 14, 13, 17, 16, 18, 24], # 14 vertices
               [1, 36, 2, 33, 3, 18, 4, 23, 5, 22, 6, 35, 7, 28, 8, 32, 9, 34, 31, 30, 27, 26, 11, 10, 15, 14, 13, 12, 25, 24, 17, 16, 20, 19, 21, 29], # 18 vertices
               [6, 9, 11, 3, 10, 5, 12, 7, 1, 2, 4, 8]]
-caseNum = 4
+caseNum = 5
 
 # retrieving graphs from txt file and generating an array that will be used to generate graphs
     # graph values 
