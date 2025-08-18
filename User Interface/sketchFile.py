@@ -50,3 +50,7 @@ def testing():
 testing()
 
 '''
+
+# do loops defaulty start at 0?
+for i in range(10):
+  print(i)

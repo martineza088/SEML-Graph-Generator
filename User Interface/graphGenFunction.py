@@ -186,9 +186,6 @@ def sortNodeValues(graphValues, n):
     return vertices, edges, vHead, vTail, r
 
 
-###############################
-SEMLgraph = nx.DiGraph()  ################################################################## <----------- TODO: I would like to move this near the end (for organization), but I will need to test if this would work later 
-###############################
 
 # Function that automatically calculates the coordinates of each node in a graph with n nodes. Returns these coordinates.
 # param n: the number of nodes in the graph 
@@ -227,7 +224,7 @@ def coordinateGen(n, r):
 # param x_cor/y_cor: an array of the assigned x-coordinates/y-coordinates for each node
 # param vertices: an array containing the values of each vertex node in the graph
 # param vHead/vTail: arrays containing values that are considered either a head or tail vertex
-def groupingCoordinates (x_cor, y_cor, vertices, vHead, vTail):
+def groupingCoordinates (graphObject, x_cor, y_cor, vertices, vHead, vTail):
 
     print("Coordinates in proper formats: ") #printing coordinates + formatting them into tuples
     coordinateTuples = []
@@ -240,7 +237,7 @@ def groupingCoordinates (x_cor, y_cor, vertices, vHead, vTail):
     # for loop that iterates through the x and y-coordinate arrays (for node location) and values in SEML array (FOR NODES ONLY)
     for i in range(len(vertices)):
         # SEMLgraph.add_node(7,pos=(-4,-2),node_color='gray') <- command format for below
-        SEMLgraph.add_node(vertices[i], pos = (x_cor[i], y_cor[i]), node_color = 'gray')
+        graphObject.add_node(vertices[i], pos = (x_cor[i], y_cor[i]), node_color = 'gray')
 
 
     edgeTuples = []
@@ -257,10 +254,18 @@ def groupingCoordinates (x_cor, y_cor, vertices, vHead, vTail):
 # Adds directed edges to the graph object, does it in a pattern consistent with SEML graph properties
 # param graphName: the name of the graph object
 # param edgeTuples: a tuple that will determine where directed edges will go and what direction they will face
+'''
 def addEdges(graphName, edgeTuples):
-    # toExecute =  graphName + ".add_edges_from(" + str(edgeTuples) + ")"  #TODO: TEST IF THIS LINE OF CODE WOULD WORK (would make it so that the function is more generalizable, so the graph can be named anything and nodes will still be added to it)
-    toExecute = "SEMLgraph.add_edges_from(" + str(edgeTuples) + ")" 
+    toExecute =  graphName + ".add_edges_from(" + str(edgeTuples) + ")"  #TODO: TEST IF THIS LINE OF CODE WOULD WORK (would make it so that the function is more generalizable, so the graph can be named anything and nodes will still be added to it)
+    #toExecute = "SEMLgraph.add_edges_from(" + str(edgeTuples) + ")" 
     exec(toExecute)
+'''
+
+def addEdges(graphObject, edgeTuples):
+    stringEdgeTuples = str(edgeTuples)
+    print("This is edgeTuples: ", edgeTuples)
+    print("This is stringEdgeTuples: ", stringEdgeTuples)
+    graphObject.add_edges_from(edgeTuples)
 
 
 # adding edge values to the graph
@@ -340,7 +345,7 @@ def edgeCoordGen(r, angle, origin):
 # Creates an array of edge coordinate tuples and adds these edges to the graph object
 # param r: float value, should come from the loop of graphGen AFTER passing coordinate values into findRadius function
 # param edgeAngleArray: an array of the angle assigned to each edge, should come from edgeAngleGen
-def edgeCoordArrayGen(r, edges, nodeMidpoints, edgeAngleArray):
+def edgeCoordArrayGen(r, edges, nodeMidpoints, edgeAngleArray, graphObject):
     edgeCoordPoints = []
     # generating all edge coordinate points
     for i in range(len(nodeMidpoints)):
@@ -352,16 +357,30 @@ def edgeCoordArrayGen(r, edges, nodeMidpoints, edgeAngleArray):
     # for loop that iterates through edge coordinate array (EDGES ONLY)
     for i in range(len(edgeCoordPoints)):
         # SEMLgraph.add_node(7,pos=(-4,-2),node_color='gray') <- command format for below
-        SEMLgraph.add_node(edges[i], pos = edgeCoordPoints[i], node_color = 'gray')
+        graphObject.add_node(edges[i], pos = edgeCoordPoints[i], node_color = 'gray')
         #    SEMLgraph.add_node(edges[i], pos = (edgeCoordPoints[i][0], edgeCoordPoints[i][1]), node_color = 'gray')
 
 
+# Creates the actual PNG's of the graphs
+def graphPNG(graphObject, i):
+    position = nx.get_node_attributes(graphObject, 'pos')
+    node_color = nx.get_node_attributes(graphObject, 'node_color')
+    title = "SEML Graph #" + str(i)
 
+    mp.title(title)
+    nx.draw(graphObject, position, node_color = 'gray', with_labels = True)
+
+    mp.savefig(title + ".jpg")
+    #next two functions are executed to clear the recently created graphs (to prepare to create new graphs)
+    mp.clf()
+    graphObject.clear()
+    print("SEML Graph #", i, "has been generated\n\n")
 
 # A single function that generates all the graphs in the txt file found in txtFilePath
 def graphGen(txtFilePath):
+    SEML_GRAPH = nx.DiGraph()
     SEML_graphValues, SEML_kValues = readFile(txtFilePath) 
-    graphName = "SEMLgraph"
+    graphName = "SEML_GRAPH"
     # create a loop that iterates through the 2D array containing formatted graph values
     for i in range(len(SEML_graphValues)):
         currentGraph = SEML_graphValues[i]
@@ -374,10 +393,10 @@ def graphGen(txtFilePath):
         x_cor, y_cor, anglesDeg = coordinateGen(n, r)
 
         #calling groupingCoordinates
-        coordinateTuples, edgeTuples = groupingCoordinates(x_cor, y_cor, vertices, vHead, vTail)
+        coordinateTuples, edgeTuples = groupingCoordinates(SEML_GRAPH, x_cor, y_cor, vertices, vHead, vTail)
 
         #calling addEdges
-        addEdges(graphName, edgeTuples)
+        addEdges(SEML_GRAPH, edgeTuples)
 
         # calling findRadius, updating the value of r
         r = findRadius((x_cor[0], y_cor[0]), (x_cor[1], y_cor[1]))
@@ -389,7 +408,10 @@ def graphGen(txtFilePath):
         edgeAngleArray = edgeAngleGen(anglesDeg)
 
         # calling edgeCoordArrayGen
-        edgeCoordArrayGen(r, edges, nodeMidpoints, edgeAngleArray)    
+        edgeCoordArrayGen(r, edges, nodeMidpoints, edgeAngleArray, SEML_GRAPH)
+
+        # calling graphPNG
+        graphPNG(SEML_GRAPH, i)    
     return 1
 
 
@@ -400,7 +422,12 @@ print("\n\n\n^^^^^^^^^^^^^^^^^ THIS IS GRAPH GEN ^^^^^^^^^^^^^^^^^^^^^^^^\n\n\n"
 
 
 
+
+
+
+
 #STRINGS TO AVOID CREATING GRAPHS
+
 '''
 position = nx.get_node_attributes(SEMLgraph, 'pos')
 node_color = nx.get_node_attributes(SEMLgraph, 'node_color')
