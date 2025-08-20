@@ -51,6 +51,6 @@ testing()
 
 '''
 
-# do loops defaulty start at 0?
+# do loops defaulty start at 0? yes
 for i in range(10):
   print(i)

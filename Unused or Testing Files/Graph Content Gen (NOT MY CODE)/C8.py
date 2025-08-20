@@ -1,5 +1,7 @@
 # @author Alley Koenig
 
+# CHANGE OUTPUT FORMAT FOR THIS
+
 from genFunctions import norepet
 from genFunctions import inrange
 
@@ -35,7 +37,8 @@ for k in range(-11,1):
                                     if not(norepet(cycle) and inrange(cycle,1, 16)):
                                         continue
                                     count += 1
-                                    print(cycle, ' k=',k)
+                                    reformattedCycle = [v1, v2, v3, v4, v5, v6, v7, v8, e1, e2, e3, e4, e5, e6, e7, e8]
+                                    print(reformattedCycle, ' k=',k)
 for k in range(1,17):
     for v8 in range(1,17):
         for e8 in range(1,17):
@@ -68,7 +71,8 @@ for k in range(1,17):
                                     if not(norepet(cycle) and inrange(cycle,1, 16)):
                                         continue
                                     count += 1
-                                    print(cycle, ' k=',k)
+                                    reformattedCycle = [v1, v2, v3, v4, v5, v6, v7, v8, e1, e2, e3, e4, e5, e6, e7, e8]
+                                    print(reformattedCycle, ' k=',k)
 for k in range(17,29):
     for v8 in range(1,17):
         for e8 in range(1,17):
@@ -99,5 +103,6 @@ for k in range(17,29):
                                     if not(norepet(cycle) and inrange(cycle,1, 16)):
                                         continue
                                     count += 1
-                                    print(cycle, ' k=',k)
+                                    reformattedCycle = [v1, v2, v3, v4, v5, v6, v7, v8, e1, e2, e3, e4, e5, e6, e7, e8]
+                                    print(reformattedCycle, ' k=',k)
 print(count)

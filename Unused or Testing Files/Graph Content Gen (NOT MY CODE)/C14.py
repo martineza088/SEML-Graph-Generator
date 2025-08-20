@@ -5,7 +5,7 @@
 from genFunctions import norepet
 from genFunctions import inrange
 
-count =0
+count = 0
 for k in range(-23,52):
     cycle=[1,2,3,4,5,6,7]
     for e2 in range(8,29):
@@ -52,7 +52,9 @@ for k in range(-23,52):
                                     e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,e11,e12,e13,e14]
                                 if not(norepet(cycle) and inrange(cycle,1, 28)):
                                     continue
-                                print([[1,2,3,4,5,6,7],[v2,v4,v6,v8,v10,v12,v14],
-                                  [e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,e11,e12,e13,e14]],"k= ",k)
+                                #print([[1,2,3,4,5,6,7],[v2,v4,v6,v8,v10,v12,v14],
+                                  #[e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,e11,e12,e13,e14]],"k= ",k)
+                                reformattedCycle = [1, v2, 2, v4, 3, v6, 4, v8, 5, v10, 6, v12, 7, v14, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14]
+                                print(reformattedCycle, ' k =', k)
                                 count +=1
 print("count = ", count)

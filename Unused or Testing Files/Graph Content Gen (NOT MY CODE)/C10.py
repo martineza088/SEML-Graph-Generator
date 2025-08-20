@@ -51,5 +51,6 @@ for v10 in range(1,21):
                                         count +=1
                                         cycle = [[v1,v3,v5,v7,v9],[v2,v4,v6,v8,v10],
                                                 [e1,e2,e3,e4,e5,e6,e7,e8,e9,e10]]
-                                        print(cycle, ' k =', k)
+                                        reformattedCycle = [v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10]
+                                        print(reformattedCycle, ' k =', k)
 print(count)

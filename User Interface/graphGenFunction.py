@@ -362,10 +362,10 @@ def edgeCoordArrayGen(r, edges, nodeMidpoints, edgeAngleArray, graphObject):
 
 
 # Creates the actual PNG's of the graphs
-def graphPNG(graphObject, i):
+def graphPNG(graphObject, i, kValues):
     position = nx.get_node_attributes(graphObject, 'pos')
     node_color = nx.get_node_attributes(graphObject, 'node_color')
-    title = "SEML Graph #" + str(i)
+    title = "SEML Graph #" + str(i) + ", k = " + str(kValues[i])
 
     mp.title(title)
     nx.draw(graphObject, position, node_color = 'gray', with_labels = True)
@@ -411,7 +411,7 @@ def graphGen(txtFilePath):
         edgeCoordArrayGen(r, edges, nodeMidpoints, edgeAngleArray, SEML_GRAPH)
 
         # calling graphPNG
-        graphPNG(SEML_GRAPH, i)    
+        graphPNG(SEML_GRAPH, i, SEML_kValues)    
     return 1
 
 
