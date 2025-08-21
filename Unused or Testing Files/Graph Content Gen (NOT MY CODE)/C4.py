@@ -20,7 +20,7 @@ for k in range(-3,1):
                     if not(norepet(cycle) and inrange(cycle,1, 8)):
                         continue
                     count += 1
-                    print(cycle, ' k=',k)
+                    print(cycle, ' k =',k)
 for k in range(1,9):
     for v4 in range(1,9):
         for e4 in range(1,9):
@@ -39,7 +39,7 @@ for k in range(1,9):
                     if not(norepet(cycle) and inrange(cycle,1, 8)):
                         continue
                     count += 1
-                    print(cycle, ' k=',k)
+                    print(cycle, ' k =',k)
 for k in range(9,13):
     for v4 in range(1,9):
         for e4 in range(1,9):
@@ -56,5 +56,5 @@ for k in range(9,13):
                     if not(norepet(cycle) and inrange(cycle,1, 8)):
                         continue
                     count += 1
-                    print(cycle, ' k=',k)
+                    print(cycle, ' k =',k)
 print(count)

@@ -35,20 +35,20 @@ print("This is vHead -> " + str(vHead))
 print("This is vTail -> " + str(vTail))
 
 #   @return a boolean, true if the given SEML graph is valid, false otherwise
-def SEMLgraphValidity(array):
+def SEMLgraphValidity(array, k):
     vertices, edges = VEarrayGen(array)
     vHead, vTail = V_HeadTailGen(vertices, edges) 
     # code block that does calculates the sums for each head vertex and its edge value
     sum = [] # array of (headVertex + edgeLabel) values
     numV = int(len(vertices)/2) #variable used for the following loop
-    print("Value of numV -> " + str(numV)) #
+    #print("Value of numV -> " + str(numV)) #
     for v in range(numV):
         vIndex = (v+1)%numV #makes sure that second head vertex is added first and the first head vertex is added last (to follow the formatting of the SEML graph values in Alley's code output)
         for i in range(2):
             appending = vHead[vIndex] + edges[((2*v) + i + 1) % len(edges)] #adding the head vertex and its associated edge label
             sum.append(appending)
 
-    print("Final sum array -> " + str(sum))
+    #print("Final sum array -> " + str(sum))
     # code block that calculates the subtractive edge weight
     subWeight = []
     for v in range(numV):
@@ -57,20 +57,27 @@ def SEMLgraphValidity(array):
             appending = sum[((2*v) + i + 1) % len(edges)] - vTail[vIndex] # subtracting tail vertex from the sum (head vertex + edge label) 
             subWeight.append(appending)
 
-    print("Final subtractive edge weight array -> " + str(subWeight))
+    #print("Final subtractive edge weight array -> " + str(subWeight))
 
     # code block that checks to see if the SEML graph is valid based on whether or not all subtractive edge weights in the graph match
     graphValidity = True
     for i in range(1, len(subWeight)):
-        if(subWeight[0] == subWeight[i]):
+        if(k == subWeight[i]):
             continue
         else:
-            print("Elements don't match: " + str(subWeight[0]) + " and " + str(subWeight[i])) 
+            print("Subtractive edge value doesn't match k-value: " + str(k) + " and " + str(subWeight[i])) 
             graphValidity = False
 
     if (graphValidity == True):
-        print("Graph is Valid")
+        print(array, " ---> Graph is Valid\n")
     else: 
-        print("Graph is Not Valid")
+        print(array, "---> Graph is Not Valid\n")
 
-    return(graphValidity)
+    return graphValidity
+
+#
+from graphGenFunction import readFile
+filePath = r"C:\Users\alyan\Downloads\Research\SEML Research (Summer '24 & '25)\SEML-Graph-Generator\User Interface\testUserInput.txt"
+testCases, kValues = readFile(filePath)
+for i in range(len(testCases)):
+    SEMLgraphValidity(testCases[i], kValues[i])
