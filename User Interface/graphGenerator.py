@@ -312,7 +312,7 @@ def graphPNG(graphObject, i, kValues):
     #next two functions are executed to clear the recently created graphs (to prepare to create new graphs)
     mp.clf()
     graphObject.clear()
-    print("SEML Graph #", i, "has been generated\n\n")
+    print("Graph #", i, "has been generated\n\n")
 
 
 # A single function that generates all the graphs in the txt file found in txtFilePath
