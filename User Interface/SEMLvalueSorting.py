@@ -75,9 +75,4 @@ def SEMLgraphValidity(array, k):
 
     return graphValidity
 
-#
-from graphGenFunction import readFile
-filePath = r"C:\Users\alyan\Downloads\Research\SEML Research (Summer '24 & '25)\SEML-Graph-Generator\User Interface\testUserInput.txt"
-testCases, kValues = readFile(filePath)
-for i in range(len(testCases)):
-    SEMLgraphValidity(testCases[i], kValues[i])
+
