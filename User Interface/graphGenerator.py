@@ -359,6 +359,7 @@ def checkingGraphValidity(graphValues, kValues):
     #graphValues, k_Values = readFile(filePath)
 
     for i in range(len(graphValues)):
+        print("Checking validity of Graph #", i)
         SEMLgraphValidity(graphValues[i], kValues[i])
 
 

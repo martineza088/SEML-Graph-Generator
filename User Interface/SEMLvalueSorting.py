@@ -14,8 +14,8 @@ def VEarrayGen(array):
     return vertices, edges
 
 vertices, edges = VEarrayGen(testArray)
-print("This is vertices -> " + str(vertices))
-print("This is edges -> " + str(edges))
+#print("This is vertices -> " + str(vertices))
+#print("This is edges -> " + str(edges))
 
 
 def V_HeadTailGen(vertices, edges):
@@ -31,8 +31,8 @@ def V_HeadTailGen(vertices, edges):
     return vHead, vTail
 
 vHead, vTail = V_HeadTailGen(vertices, edges)
-print("This is vHead -> " + str(vHead))
-print("This is vTail -> " + str(vTail))
+#print("This is vHead -> " + str(vHead))
+#print("This is vTail -> " + str(vTail))
 
 #   @return a boolean, true if the given SEML graph is valid, false otherwise
 def SEMLgraphValidity(array, k):
