@@ -350,7 +350,7 @@ def graphGen(txtFilePath, SEML_graphValues, SEML_kValues):
         edgeCoordArrayGen(r, edges, nodeMidpoints, edgeAngleArray, SEML_GRAPH)
 
         # calling graphPNG
-        #graphPNG(SEML_GRAPH, i, SEML_kValues)    
+        graphPNG(SEML_GRAPH, i, SEML_kValues)    
 
 
 
