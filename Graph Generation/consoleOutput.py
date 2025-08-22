@@ -1,7 +1,7 @@
 from graphGenerator import *
 
 # this python script will serve to provide user's ability to generate graphs using only input
-filePath1 = r"C:\Users\alyan\Downloads\Research\SEML Research (Summer '24 & '25)\SEML-Graph-Generator\User Interface\testUserInput.txt"
+filePath1 = r"C:\Users\alyan\Downloads\Research\SEML Research (Summer '24 & '25)\SEML-Graph-Generator\Graph Generation\testUserInput.txt"
 
 def consoleOutput(filePath):
     print("\n\nInitializing graph generator...\n\n")
