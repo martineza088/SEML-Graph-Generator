@@ -5,11 +5,6 @@ import matplotlib.pyplot as mp
 #importing math library to calculate sine and cosine values
 import math as math
 
-# retrieving graphs from txt file and generating an array that will be used to generate graphs
-    # graph values 
-#requires a filePath to read a txt <- will be a parameter for the function as well
-
-
 
 # Helper method for the splitContent function
 # returns false if element is a non-integer, true if it can be casted as an integer (question: is it an integer?  answer: T/F)

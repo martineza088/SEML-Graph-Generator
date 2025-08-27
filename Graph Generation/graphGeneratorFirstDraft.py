@@ -19,7 +19,9 @@ caseNum = 5
 
 # retrieving graphs from txt file and generating an array that will be used to generate graphs
     # graph values 
-filePath1 = r"C:\Users\alyan\Downloads\Research\SEML Research (Summer '24 & '25)\SEML-Graph-Generator\User Interface\testUserInput.txt"
+#old filePath1 = r"C:\Users\alyan\Downloads\Research\SEML Research (Summer '24 & '25)\SEML-Graph-Generator\User Interface\testUserInput.txt"
+# file path for future use vvv
+filePath1 = r"C:\Users\alyan\Downloads\Research\SEML Research (Summer '24 & '25)\SEML-Graph-Generator\Graph Generation\testUserInput.txt"
 
 
 ## VVV CAN BE DELETED (testing file reads)
