@@ -250,9 +250,6 @@ def graphGen(array):
 
 # create a loop that iterates through the array generated using values provided in the txt
 
-
-
-#STRINGS TO AVOID CREATING GRAPHS
 #'''
 position = nx.get_node_attributes(SEMLgraph, 'pos')
 node_color = nx.get_node_attributes(SEMLgraph, 'node_color')
@@ -266,7 +263,7 @@ title.append("Graph " + str(caseNum) + " of [INSERT AMOUNT OF VALID GRAPHS ] - k
 mp.title(title[0])
 nx.draw(SEMLgraph, position, node_color = 'gray', with_labels = True)
 
-# CHANGE LINES 222   AND 216  
+
 mp.savefig(title[0] + ".jpg")
 #next two functions are executed to clear the recently created graphs (to prepare to create new graphs)
 mp.clf()

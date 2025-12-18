@@ -1,6 +1,6 @@
 # @author Alley Koenig
 
-# CHANGE OUTPUT FORMAT FOR THIS (- wrong format, - output includes k-values -> must be excluded, - takes a long time to create output)
+# TODO: Change output format for this (- wrong format, - output includes k-values -> must be excluded, - takes a long time to create output)
 
 from genFunctions import norepet
 from genFunctions import inrange

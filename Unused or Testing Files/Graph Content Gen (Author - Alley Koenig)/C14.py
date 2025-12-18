@@ -1,6 +1,6 @@
 # @author Alley Koenig
 
-# CHANGE OUTPUT FORMAT FOR THIS
+# TODO: Change output format for this
 
 from genFunctions import norepet
 from genFunctions import inrange

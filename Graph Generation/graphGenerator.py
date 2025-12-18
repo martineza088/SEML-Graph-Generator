@@ -5,9 +5,11 @@ import matplotlib.pyplot as mp
 #importing math library to calculate sine and cosine values
 import math as math
 
-
-# Helper method for the splitContent function
-# returns false if element is a non-integer, true if it can be casted as an integer (question: is it an integer?  answer: T/F)
+'''
+Helper method for the splitContent function
+    Return:  false if element is a non-integer, true if it can be casted as an integer 
+    (question: is it an integer?  answer: T/F)
+'''
 def intCheck(element):
     intStatus = True
     try:
@@ -160,10 +162,17 @@ def coordinateGen(n, r):
     return x_cor, y_cor, anglesDeg
 
 
-# Groups the x and y coordinates for each node into a touple. It also assigned directed edges to certain nodes to follow the properties of an SEML graph
-# param x_cor/y_cor: an array of the assigned x-coordinates/y-coordinates for each node
-# param vertices: an array containing the values of each vertex node in the graph
-# param vHead/vTail: arrays containing values that are considered either a head or tail vertex
+'''
+Groups the x and y coordinates for each node into a touple. It also assigned directed edges to certain nodes to follow the properties of an SEML graph
+    Args: 
+        x_cor/y_cor (array): an array of the assigned x-coordinates/y-coordinates for each node
+        vertices (array): an array containing the values of each vertex node in the graph
+        vHead/vTail (array): arrays containing values that are considered either a head or tail vertex
+    Returns: 
+        coordinateTuples: An array of tuples representing coordinates for edges
+        edgeTuples: An array of tuples containing the edge values that correspond to each other
+
+'''
 def groupingCoordinates (graphObject, x_cor, y_cor, vertices, vHead, vTail):
 
     #print("Coordinates in proper formats: ") #printing coordinates + formatting them into tuples

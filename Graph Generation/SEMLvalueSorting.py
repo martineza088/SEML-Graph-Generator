@@ -1,4 +1,4 @@
-#let's say this is the original array
+# testing array with test graph values
 testArray = [1, 9, 2, 20, 3, 16, 4, 19, 5, 11, 8, 7, 18, 17, 13, 12, 15, 14, 6, 10]
 
 #splitting the array into seperated vertex and edge arrays

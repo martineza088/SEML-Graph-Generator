@@ -1,4 +1,0 @@
-hmmmmm
-checking output
-more words -> i
-number!: 8.0
